@@ -1,0 +1,15 @@
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
+*.sw*
+*~
+*.log
+public/js/
+public/build
+public/js/main.js
+public/*.csv
+public/photos/
+storage
+app/Helpers/generated/
