@@ -7,6 +7,7 @@ Homestead.json
 *~
 *.log
 public/js/
+public/css/
 public/build
 public/js/main.js
 public/*.csv
