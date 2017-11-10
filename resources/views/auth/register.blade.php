@@ -67,7 +67,14 @@
                                     Register
                                 </button>
                             </div>
-                        </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-md-6 col-md-offset-4">
+				<a class="btn btn-block btn-social btn-facebook" href="{{ url('/auth/facebook') }}">
+				    <span class="fa fa-facebook"></span> Sign in with Facebook
+				</a>
+			    </div>
+			</div>
                     </form>
                 </div>
             </div>
