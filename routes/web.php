@@ -26,3 +26,7 @@ Route::get('login/facebook/callback', 'Auth\FacebookLoginController@facebookCall
 // Vkontakte
 Route::get('login/vk', 'Auth\VkLoginController@vkRedirect');
 Route::get('login/vk/callback', 'Auth\VkLoginController@vkCallback');
+
+// Google
+Route::get('login/gp', 'Auth\GoogleLoginController@gpRedirect');
+Route::get('login/gp/callback', 'Auth\GoogleLoginController@gpCallback');

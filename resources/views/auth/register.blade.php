@@ -79,6 +79,11 @@
 				    <span class="fa fa-vk"></span> Sign in with Vkontakte
 				</a>
 			    </div>
+			    <div class="col-md-6 col-md-offset-4">
+				<a class="btn btn-block btn-social btn-google" href="{{ url('/login/gp') }}">
+				    <span class="fa fa-google"></span> Sign in with Google
+				</a>
+			    </div>
 			</div>
                     </form>
                 </div>
