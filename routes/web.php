@@ -18,5 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Facebook
 Route::get('login/facebook', 'Auth\FacebookLoginController@facebookRedirect');
 Route::get('login/facebook/callback', 'Auth\FacebookLoginController@facebookCallback');
+
+// Vkontakte
+Route::get('login/vk', 'Auth\VkLoginController@vkRedirect');
+Route::get('login/vk/callback', 'Auth\VkLoginController@vkCallback');

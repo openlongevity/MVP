@@ -74,6 +74,11 @@
 				    <span class="fa fa-facebook"></span> Sign in with Facebook
 				</a>
 			    </div>
+			    <div class="col-md-6 col-md-offset-4">
+				<a class="btn btn-block btn-social btn-vk" href="{{ url('/login/vk') }}">
+				    <span class="fa fa-vk"></span> Sign in with Vkontakte
+				</a>
+			    </div>
 			</div>
                     </form>
                 </div>

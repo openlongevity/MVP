@@ -70,8 +70,6 @@ class FacebookLoginController extends LoginController
 	$aUserParams = [
             'name'     => $user->name,
             'email'    => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id,
             'avatar' => $user->avatar,
             'gender' => $gender
         ];

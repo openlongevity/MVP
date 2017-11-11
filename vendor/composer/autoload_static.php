@@ -12,8 +12,8 @@ class ComposerStaticInited5f3bc923ee3ceb92a947c1b0bc6b85
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -54,6 +54,9 @@ class ComposerStaticInited5f3bc923ee3ceb92a947c1b0bc6b85
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'SocialiteProviders\\VKontakte\\' => 29,
+            'SocialiteProviders\\Manager\\Test\\' => 32,
+            'SocialiteProviders\\Manager\\' => 27,
         ),
         'R' => 
         array (
@@ -190,6 +193,18 @@ class ComposerStaticInited5f3bc923ee3ceb92a947c1b0bc6b85
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'SocialiteProviders\\VKontakte\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/socialiteproviders/vkontakte',
+        ),
+        'SocialiteProviders\\Manager\\Test\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/socialiteproviders/manager/tests',
+        ),
+        'SocialiteProviders\\Manager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/socialiteproviders/manager/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -339,6 +354,7 @@ class ComposerStaticInited5f3bc923ee3ceb92a947c1b0bc6b85
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Auth\\FacebookLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/FacebookLoginController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -357,6 +373,7 @@ class ComposerStaticInited5f3bc923ee3ceb92a947c1b0bc6b85
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\UserSsProvider' => __DIR__ . '/../..' . '/app/UserSSProvider.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -3075,6 +3092,24 @@ class ComposerStaticInited5f3bc923ee3ceb92a947c1b0bc6b85
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'SocialiteProviders\\Manager\\Config' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Config.php',
+        'SocialiteProviders\\Manager\\ConfigTrait' => __DIR__ . '/..' . '/socialiteproviders/manager/src/ConfigTrait.php',
+        'SocialiteProviders\\Manager\\Contracts\\ConfigInterface' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Contracts/ConfigInterface.php',
+        'SocialiteProviders\\Manager\\Contracts\\Helpers\\ConfigRetrieverInterface' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Contracts/Helpers/ConfigRetrieverInterface.php',
+        'SocialiteProviders\\Manager\\Contracts\\OAuth1\\ProviderInterface' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Contracts/OAuth1/ProviderInterface.php',
+        'SocialiteProviders\\Manager\\Contracts\\OAuth2\\ProviderInterface' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Contracts/OAuth2/ProviderInterface.php',
+        'SocialiteProviders\\Manager\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Exception/InvalidArgumentException.php',
+        'SocialiteProviders\\Manager\\Exception\\MissingConfigException' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Exception/MissingConfigException.php',
+        'SocialiteProviders\\Manager\\Helpers\\ConfigRetriever' => __DIR__ . '/..' . '/socialiteproviders/manager/src/Helpers/ConfigRetriever.php',
+        'SocialiteProviders\\Manager\\OAuth1\\AbstractProvider' => __DIR__ . '/..' . '/socialiteproviders/manager/src/OAuth1/AbstractProvider.php',
+        'SocialiteProviders\\Manager\\OAuth1\\Server' => __DIR__ . '/..' . '/socialiteproviders/manager/src/OAuth1/Server.php',
+        'SocialiteProviders\\Manager\\OAuth1\\User' => __DIR__ . '/..' . '/socialiteproviders/manager/src/OAuth1/User.php',
+        'SocialiteProviders\\Manager\\OAuth2\\AbstractProvider' => __DIR__ . '/..' . '/socialiteproviders/manager/src/OAuth2/AbstractProvider.php',
+        'SocialiteProviders\\Manager\\OAuth2\\User' => __DIR__ . '/..' . '/socialiteproviders/manager/src/OAuth2/User.php',
+        'SocialiteProviders\\Manager\\ServiceProvider' => __DIR__ . '/..' . '/socialiteproviders/manager/src/ServiceProvider.php',
+        'SocialiteProviders\\Manager\\SocialiteWasCalled' => __DIR__ . '/..' . '/socialiteproviders/manager/src/SocialiteWasCalled.php',
+        'SocialiteProviders\\VKontakte\\Provider' => __DIR__ . '/..' . '/socialiteproviders/vkontakte/Provider.php',
+        'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite' => __DIR__ . '/..' . '/socialiteproviders/vkontakte/VKontakteExtendSocialite.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Command\\Command' => __DIR__ . '/..' . '/symfony/console/Command/Command.php',
         'Symfony\\Component\\Console\\Command\\HelpCommand' => __DIR__ . '/..' . '/symfony/console/Command/HelpCommand.php',
