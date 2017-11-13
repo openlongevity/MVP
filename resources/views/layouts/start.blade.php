@@ -11,12 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ol.css') }}" rel="stylesheet">
     <link href="{{ asset('css/marino.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/1.0.0/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
 
@@ -50,11 +46,32 @@
     </div>
 
     <!-- Scripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script-->
+
+<script src="/js/bower_components/jquery/dist/jquery.js"></script>
+<script src="/js/bower_components/tether/dist/js/tether.js"></script>
+<script src="/js/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/js/bower_components/PACE/pace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+<script src="/js/marino-scripts/components/jquery-fullscreen/jquery.fullscreen-min.js"></script>
+<script src="/js/bower_components/jquery-storage-api/jquery.storageapi.min.js"></script>
+<script src="/js/bower_components/wow/dist/wow.min.js"></script>
+
+<script src="/js/marino-scripts/functions.js"></script>
+<script src="/js/marino-scripts/colors.js"></script>
+<script src="/js/marino-scripts/left-sidebar.js"></script>
+<script src="/js/marino-scripts/navbar.js"></script>
+<script src="/js/marino-scripts/horizontal-navigation-1.js"></script>
+<script src="/js/marino-scripts/horizontal-navigation-2.js"></script>
+<script src="/js/marino-scripts/horizontal-navigation-3.js"></script>
+<script src="/js/marino-scripts/components/floating-labels.js"></script>
+<script src="/js/marino-scripts/main.js"></script>
+<script src="/js/marino-scripts/forms-sample.js"></script>
+
 </body>
 </html>
 

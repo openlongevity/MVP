@@ -10,6 +10,10 @@
     justify-content: center;
 }
 
+.form-container {
+    background-color: #fff;
+}
+
 .position-ref {
     position: relative;
 }
@@ -31,4 +35,65 @@
     text-align: center;
     color: #fff;
     font-size: 70%;
+}
+
+.block {
+    color: #000;
+}
+.btn-ol-login {
+    background-color: #0080ca;
+    color: #fff;
+}
+
+.btn-ol-ss {
+    background-color: #0080ca;
+    color: #fff;
+}
+.label-remember {
+    color: #0080ca;
+    font-size: 75%;
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    transform: translateY(25%);
+}
+
+.noactive-header-label {
+    color: #0080ca;
+    font-size: 130%;
+    font-weight: 400;
+    margin-top:10px;
+}
+
+.active-header-label {
+    font-size: 130%;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-top:10px;
+}
+
+.mycontent-left {
+    border-right: 1px solid #d3d3d3;
+    margin-top:10px;
+}
+
+
+.label-email {
+    text-align: left;
+    font-size: 80%;
+}
+
+label {
+    z-index: 2000;
+}
+
+.label-ss {
+    text-align: left;
+    font-size: 80%;
+}
+
+.help-block {
+    text-align: left;
+    font-size: 70%;
+    color: #f00;
 }

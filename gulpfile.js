@@ -16,5 +16,7 @@ elixir(function(mix) {
     mix.sass('ol.scss');
     mix.copy('resources/assets/images/','public/images/');
     mix.copy('resources/assets/css/','public/css/');
+    mix.copy('resources/assets/js/marino-scripts','public/js/marino-scripts');
+    mix.copy('resources/assets/js/bower_components','public/js');
 });
 

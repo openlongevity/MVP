@@ -1,68 +1,84 @@
 @extends('layouts.start')
 
 @section('content')
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-
-		<div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
+<div class="row m-b-40">
+    <div class="col-md-4">
+	&nbsp;
+    </div>
+    <div class="form-container col-md-4">
+        <div class="block">
+            <div class="row">
+		<div class="col-xs-4 active-header-label mycontent-left">
+		    Войти
+		</div>
+		<div class="col-xs-8 noactive-header-label">
+		     <a href="{{ url('/register') }}">Регистрация</a>
+		</div>
+	    </div>
+	    <hr />
+            <div class="row">
+                <div class="col-xs-6 label-ss">
+		    Вы можете использовать <br />
+		    аккаунт своей соцсети: 
+		</div>
+                <div class="col-xs-6">
+                    <a class="btn btn-sm btn-ol-ss m-r-5" href="{{ url('/login/facebook') }}"><i class="fa fa-facebook color-white"></i></a>
+                    <a class="btn btn-sm btn-ol-ss m-r-5" href="{{ url('/login/vk') }}"><i class="fa fa-vk color-white"></i> </a>
+                    <a class="btn btn-sm btn-ol-ss m-r-5" href="{{ url('/login/gp') }}"><i class="fa fa-google-plus color-white"></i> </a>
+		</div>
+            </div>
+	    <hr />
+            <p class="m-b-20 label-email">Или войти с помощью E-mail:</p>
+            <form name="form" novalidate  method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group floating-labels">
+                            <label for="email-1">Почта</label>
+                            <input id="email-1" autocomplete="off" type="email" name="email">
+			    <p class="error-block">
+			    </p>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        {{ $errors->first('email') }}
                                     </span>
                                 @endif
-                            </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group floating-labels">
+                            <label for="password-1">Пароль</label>
+                            <input id="password-1" autocomplete="off" type="password" name="password">
+			    <p class="error-block">
+			    </p>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        {{ $errors->first('password') }}
                                     </span>
                                 @endif
-                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <input type="submit" class="btn btn-xs btn-ol-login" value="Войти">
+                    </div>
+                    <div class="col-xs-4">
+			&nbsp;
+		    </div>
+                    <div class="col-xs-6 label-remember">
+                        <a href="{{ route('password.request') }}">
+			    Я забыл пароль
+			</a>
+		    </div>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
