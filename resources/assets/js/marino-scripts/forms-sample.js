@@ -20,7 +20,7 @@
             minLength: 6
         });
         $('#confirm-password-1').floatingLabels({
-            errorBlock: 'Please confirm your password correctly',
+            errorBlock: 'Подтвердите ваш пароль',
             minLength: 6,
             isFieldEqualTo: $('#password-1')
         });
@@ -44,5 +44,10 @@
             errorBlock: 'Please enter a valid password',
             minLength: 6
         });
+        $(document).on('click', '#email-1', function(e) {
+            $(".help-block").html('');
+	    
+	});
+        $('#email-1').focus();
     });
 })();
