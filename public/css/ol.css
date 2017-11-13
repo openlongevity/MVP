@@ -103,4 +103,10 @@ label {
   color: #f00;
 }
 
+a.btn.btn-xs.btn-ol-cancel {
+  background-color: #fff;
+  color: #0080ca;
+  border: 1px;
+}
+
 /*# sourceMappingURL=ol.css.map */
