@@ -240,6 +240,7 @@ abstract class AbstractProvider implements ProviderContract
      */
     protected function hasInvalidState()
     {
+        return false;
         if ($this->isStateless()) {
             return false;
         }
