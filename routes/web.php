@@ -28,3 +28,9 @@ Route::get('login/vk/callback', 'Auth\VkLoginController@vkCallback');
 // Google
 Route::get('login/gp', 'Auth\GoogleLoginController@gpRedirect');
 Route::get('login/gp/callback', 'Auth\GoogleLoginController@gpCallback');
+
+// Profile
+Route::get('/profile', 'ProfileController@profile');
+Route::get('/profile/edit', 'ProfileController@profileEdit');
+Route::post('/profile/save', 'ProfileController@profileSave');
+

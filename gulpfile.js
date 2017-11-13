@@ -18,5 +18,6 @@ elixir(function(mix) {
     mix.copy('resources/assets/css/','public/css/');
     mix.copy('resources/assets/js/marino-scripts','public/js/marino-scripts');
     mix.copy('resources/assets/js/bower_components','public/js');
+    mix.copy('resources/assets/js/ol.js','public/js');
 });
 
