@@ -43,7 +43,7 @@
                         <input type="submit" class="btn btn-xs btn-ol-login" value="Восстановить">
                     </div>
                     <div class="col-xs-4">
-                        <a class="btn-ol-cancel" href="/">Отмена</a>
+                        <a class="btn btn-xs btn-ol-cancel" href="/">Отмена</a>
 		    </div>
                 </div>
             </form>
