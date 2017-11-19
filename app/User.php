@@ -34,7 +34,11 @@ class User extends Authenticatable
 	if ($this->profile_first_name && !empty($this->profile_first_name)) {
 	    return trim($this->profile_second_name.' '.$this->profile_first_name.' '.$this->profile_middle_name);
 	}
-	return $this->name;
+	if ($this->name && !empty($this->name)) {
+	    return $this->name;
+	}
+
+	return $this->email;
     }
 
     /**
@@ -45,8 +49,23 @@ class User extends Authenticatable
 	    return trim($this->profile_second_name.' '.$this->profile_first_name);
 	}
 
+	if ($this->name && !empty($this->name)) {
+	    return $this->name;
+	}
 
-	return $this->name;
+	return $this->email;
+
+    }
+    
+    /**
+     * Returns link to avatar.
+     */ 
+    public function getAvatarLink() {
+	if ($this->avatar) {
+	    return $this->avatar;
+	}
+
+	return '/images/no_avatar.jpg';
 
     }
 }

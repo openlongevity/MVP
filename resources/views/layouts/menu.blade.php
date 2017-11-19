@@ -23,7 +23,7 @@
 		    <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    <span class="right-link">{{ Auth::user()->getShortName() }}</span> <img src="{{$oUser->avatar}}" class="img-circle" alt="" height="35" width="35"/>
+                                    <span class="right-link">{{ Auth::user()->getShortName() }}</span> <img src="{{$oUser->getAvatarLink()}}" class="img-circle" alt="" height="35" width="35"/>
                                 </a>
 
                                 <ul class="dropdown-menu">

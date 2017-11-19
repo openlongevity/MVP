@@ -22,7 +22,7 @@
 <div class="container profile-content">
     <div class="row profile-row">
         <div class="col-md-2">
-	    <img src="{{$oUser->avatar}}" class="img-circle" alt="" height="150" width="150"/>
+	    <img src="{{$oUser->getAvatarLink()}}" class="img-circle" alt="" height="150" width="150"/>
 	</div>
         <div class="col-md-10">
 	    <div class="profile-full-name">{{$oUser->getName()}}</div>
