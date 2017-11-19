@@ -55,13 +55,13 @@
 		    <div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
 			    <li class="active">
-				<a href="#">Профиль</a>
+				<a href="/profile">Профиль</a>
 			    </li>
 			    <li data-toggle="collapse" data-target="#my_markers" class="collapsed">
-				<a href="#">Мои маркеры</a>
+				<a href="/my_markers">Мои маркеры</a>
 			    </li>  
 			    <li data-toggle="collapse" data-target="#panel_ol11" class="collapsed">
-				<a href="#">Панель OL 1.1</a>
+				<a href="/panel_ol11">Панель OL 1.1</a>
 			    </li>  
 			</ul>
 		    </div>

@@ -281,3 +281,22 @@ a.btn.btn-xs.btn-ol-cancel {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+.profile_table {
+    border-spacing: 7px;
+    border-collapse:separate;
+}
+
+.profile_cell_name {
+    color: #a8a8a8;
+}
+
+a.btn.btn-xs.btn-ol-edit {
+    font-size: 70%;
+    background-color: #fff;
+    color: #0080ca !important;
+    border: 1px solid #0080ca !important;
+    padding: 8px;
+    text-transform: none;
+    letter-spacing: normal;
+}

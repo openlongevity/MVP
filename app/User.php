@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Helpers\Helper;
 
 class User extends Authenticatable
 {
@@ -67,5 +68,17 @@ class User extends Authenticatable
 
 	return '/images/no_avatar.jpg';
 
+    }
+    /**
+     * Returns amount of ages due to birthday.
+     */ 
+    public function getAges() {
+	$birthDate = explode("-", $this->birthday);
+	//get age from date or birthdate
+	$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[1]))) > date("md")
+	    ? ((date("Y") - $birthDate[0]) - 1)
+	    : (date("Y") - $birthDate[0]));
+
+	return $age.' '.Helper::getPluralForm($age, ['год', 'года', 'лет']);
     }
 }
