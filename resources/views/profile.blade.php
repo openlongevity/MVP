@@ -45,7 +45,7 @@
 		    </tr>
 		    <tr>
 			<td class="profile_cell_name">Семейное положение:</td>
-			<td></td>
+			<td>{{$oUser->getMaritalStatus()}}</td>
 		    </tr>
 		    <tr>
 			<td class="profile_cell_name">Дети:</td>
@@ -73,6 +73,7 @@
 		    </tr>
 		</table>
 	    </div>
+	    <div class="">{{$oUser->profile_about}}</div>
 	</div>
     </div>
 </div>

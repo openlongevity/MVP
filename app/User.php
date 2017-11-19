@@ -11,6 +11,15 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Marital status in lang.
+     *
+     * @var array
+     */
+    protected $maritalStatus = [
+        'Холост', 'Женат', 'Разведен'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -69,6 +78,7 @@ class User extends Authenticatable
 	return '/images/no_avatar.jpg';
 
     }
+    
     /**
      * Returns amount of ages due to birthday.
      */ 
@@ -80,5 +90,16 @@ class User extends Authenticatable
 	    : (date("Y") - $birthDate[0]));
 
 	return $age.' '.Helper::getPluralForm($age, ['год', 'года', 'лет']);
+    }
+    
+    /**
+     * Returns amount of ages due to birthday.
+     */ 
+    public function getMaritalStatus() {
+	$index = $this->profile_marital_status;
+	if ($index > count($this->maritalStatus) - 1) {
+	    $index = 0;
+	}
+	return $this->maritalStatus[$index];
     }
 }
