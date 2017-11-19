@@ -28,7 +28,7 @@ class ProfileController extends Controller
     public function profile()
     {
 	$oUser = Auth::user();
-        return view('profile');
+        return view('profile', ['oUser' => $oUser]);
     }
     
     /**
@@ -39,7 +39,7 @@ class ProfileController extends Controller
     public function profileEdit()
     {
 	$oUser = Auth::user();
-        return view('profile', ['oUser' => $oUser]);
+        return view('profile_edit', ['oUser' => $oUser]);
     }
     
     /**

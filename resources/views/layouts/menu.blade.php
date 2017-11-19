@@ -13,23 +13,17 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ol.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/marino.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
-<body class="body-class">
-    <div id="app">
-
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-			<div class="collapse navbar-collapse" id="app-navbar-collapse">
-			    <ul class="nav navbar-nav navbar-right">
+<body>
+     <div id="app">
+		<div class="collapse navbar-collapse" id="app-navbar-collapse">
+		    <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->getShortName() }} <span class="caret"></span>
+                                    <span class="right-link">{{ Auth::user()->getShortName() }}</span> <img src="{{$oUser->avatar}}" class="img-circle" alt="" height="35" width="35"/>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -37,7 +31,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Выход
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -46,20 +40,39 @@
                                     </li>
                                 </ul>
 			    </li>
-			    </ul>
-			</div>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+		    </ul>
+		</div>
+		<hr class="top-menu-hr"/>
 
-            <div class="content">
+	<div class="row main-row">
+	    <div class="col-md-2">
+		<div class="nav-side-menu">
+
+		    <div class="brand"><img src="/images/logo_white_nobg.png" height="70px"/></div>
+		    <div class="version">V 0.1 BETA</div>
+		    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+		    
+		    <div class="menu-list">
+			<ul id="menu-content" class="menu-content collapse out">
+			    <li class="active">
+				<a href="#">Профиль</a>
+			    </li>
+			    <li data-toggle="collapse" data-target="#my_markers" class="collapsed">
+				<a href="#">Мои маркеры</a>
+			    </li>  
+			    <li data-toggle="collapse" data-target="#panel_ol11" class="collapsed">
+				<a href="#">Панель OL 1.1</a>
+			    </li>  
+			</ul>
+		    </div>
+		</div>
+	    </div>
+	    
+	    <div class="col-md-10">
 		@yield('content')
 	    </div>
+	</div>
     </div>
-
     <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -70,3 +83,5 @@
 
 </body>
 </html>
+
+
