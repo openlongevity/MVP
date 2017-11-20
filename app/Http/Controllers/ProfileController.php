@@ -28,7 +28,7 @@ class ProfileController extends Controller
     public function profile()
     {
 	$oUser = Auth::user();
-        return view('profile', ['oUser' => $oUser]);
+        return view('profile', ['oUser' => $oUser, 'active' => 'profile_link']);
     }
     
     /**

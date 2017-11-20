@@ -54,13 +54,13 @@
 		    
 		    <div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
-			    <li class="active" >
+			    <li id="profile_link">
 				<a href="/profile">Профиль</a>
 			    </li>
-			    <li data-toggle="collapse" data-target="#my_markers" class="collapsed">
+			    <li  id="my_markers_link">
 				<a href="/my_markers">Мои маркеры</a>
 			    </li>  
-			    <li data-toggle="collapse" data-target="#panel_ol11" class="collapsed">
+			    <li id="panel_ol11_link">
 				<a href="/panel_ol11">Панель OL 1.1</a>
 			    </li>  
 			</ul>
@@ -79,6 +79,27 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+    <script type="text/javascript">
+	jQuery(function($) {
+	    $(document).ready( function () {
+		// Set active class
+		$('#{{$active}}').addClass('active');	
+		
+		$(document).on("click", "#profile_link", function(e) {
+		    location.href = '/profile';
+		});
+		$(document).on("click", "#my_markers_link", function(e) {
+		    location.href = '/my_markers';
+		});
+		$(document).on("click", "#panel_ol11_link", function(e) {
+		    location.href = '/panel_ol11';
+		});
+
+
+	    });
+	});
+
+    </script>
     @yield('js')
 
 </body>
