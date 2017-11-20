@@ -49,6 +49,15 @@ class ProfileController extends Controller
      */
     public function profileSave(Request $request)
     {
+	if (!isset($request->name) || empty($request->name)) {
+	    return response()->json(array('error' => 1));
+	}
+	if (!isset($request->profile_height) || empty($request->profile_height)
+		|| !is_numeric($request->profile_height)
+		|| $request->profile_height < 50
+		|| $request->profile_height > 250) {
+	    return response()->json(array('error' => 2));
+	}
 	$oUser = Auth::user();
 	$aFields = array('profile_first_name', 'profile_second_name', 'profile_middle_name',
 		'profile_about', 'profile_height', 'profile_marital_status', 'profile_children', 

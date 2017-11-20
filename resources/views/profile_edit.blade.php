@@ -50,7 +50,7 @@
                     <div class="col-xs-12">
 			    <input autocomplete="off" type="text" name="name" 
 				value="{{$oUser->name}}" class="edit_profile_input">
-                                <span class="help-block" id="name-error">
+                                <span class="error-block" id="name-error">
                                 </span>
                     </div>
                 </div>
@@ -74,19 +74,14 @@
 		    </div>
 		    <div class="col-xs-6">
 			<div class="form-group">
-			<div class="input-group date">
-			    <input id="birthday" autocomplete="off" type="text" name="birthday" 
+			<div class="input-group date" id="birthday">
+			    <input autocomplete="off" type="text" name="birthday" 
 				value="{{$oUser->birthday}}" class="edit_profile_input" readonly>
 				<span class="input-group-addon picker-icon">
 				    <span class="glyphicon glyphicon-calendar"></span>
 				</span>
 			</div>
 			</div>
-                                @if ($errors->has('birthday'))
-                                    <span class="help-block">
-                                        {{ $errors->first('birthday') }}
-                                    </span>
-                                @endif
 		    </div>
 		</div>
                 <div>
@@ -100,12 +95,9 @@
                 <div class="row">
                     <div class="col-xs-12">
 			    <input autocomplete="off" type="text" name="profile_height" 
-				value="{{$oUser->profile_height}}" class="edit_profile_input_short">
-                                @if ($errors->has('profile_height'))
-                                    <span class="help-block">
-                                        {{ $errors->first('profile_height') }}
+				value="{{$oUser->profile_height}}" class="edit_profile_input_short"><br />
+                                    <span class="error-block" id="height-error">
                                     </span>
-                                @endif
                     </div>
                 </div>
                 <div>

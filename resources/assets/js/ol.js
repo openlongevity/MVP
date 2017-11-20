@@ -23,6 +23,11 @@ ol.manager = function () {
 		success: function(result) {
 		    $("#save_profile_btn").button('reset');
 		    if (result.error == 1) {
+			$("#name-error").html('Введите Ваши фамилию, имя и отчество');
+			return;
+		    }
+		    if (result.error == 2) {
+			$("#height-error").html('Неверное значение роста');
 			return;
 		    }
 	
