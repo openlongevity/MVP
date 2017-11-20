@@ -39,7 +39,7 @@ class ProfileController extends Controller
     public function profileEdit()
     {
 	$oUser = Auth::user();
-        return view('profile_edit', ['oUser' => $oUser]);
+        return view('profile_edit', ['oUser' => $oUser, 'active' => 'profile_link']);
     }
     
     /**
