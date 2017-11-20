@@ -343,6 +343,15 @@ a.btn.btn-xs.btn-ol-edit {
   font-size: 16px;
 }
 
+.picker-icon {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #e3e3e3;
+  height: 25px;
+  font-size: 16px;
+}
+
 .edit_profile_input_textarea {
   border: 0;
   outline: 0;

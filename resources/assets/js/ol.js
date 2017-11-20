@@ -22,7 +22,7 @@ ol.manager = function () {
 		},	
 		success: function(result) {
 		    $("#save_profile_btn").button('reset');
-		    if (result.error) {
+		    if (result.error == 1) {
 			return;
 		    }
 	

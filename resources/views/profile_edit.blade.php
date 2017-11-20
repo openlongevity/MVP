@@ -2,6 +2,10 @@
 
 @section('js')
     <script src="{{ asset('js/ol.js') }}"></script>
+    <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+
     <script type="text/javascript">
 	var olManager = new ol.manager();
 	jQuery(function($) {
@@ -11,6 +15,8 @@
 		    e.preventDefault();
 		    return false;
 		});
+
+		$('#birthday').datetimepicker({format: 'YYYY-MM-DD', defaultDate: moment(), ignoreReadonly: true});
 
 	    });
 	});
@@ -42,13 +48,10 @@
 		</div>
                 <div class="row">
                     <div class="col-xs-12">
-			    <input id="name" autocomplete="off" type="email" name="name" 
+			    <input autocomplete="off" type="text" name="name" 
 				value="{{$oUser->name}}" class="edit_profile_input">
-                                @if ($errors->has('profile_first_name'))
-                                    <span class="help-block">
-                                        {{ $errors->first('profile_first_name') }}
-                                    </span>
-                                @endif
+                                <span class="help-block" id="name-error">
+                                </span>
                     </div>
                 </div>
                 <div>
@@ -69,9 +72,16 @@
 			    <option value="1" @if ($oUser->gender == 1) selected @endif>Женский</option>
 			</select>
 		    </div>
-                    <div class="col-xs-6">
-			    <input id="name" autocomplete="off" type="text" name="birthday" 
-				value="{{$oUser->birthday}}" class="edit_profile_input">
+		    <div class="col-xs-6">
+			<div class="form-group">
+			<div class="input-group date">
+			    <input id="birthday" autocomplete="off" type="text" name="birthday" 
+				value="{{$oUser->birthday}}" class="edit_profile_input" readonly>
+				<span class="input-group-addon picker-icon">
+				    <span class="glyphicon glyphicon-calendar"></span>
+				</span>
+			</div>
+			</div>
                                 @if ($errors->has('birthday'))
                                     <span class="help-block">
                                         {{ $errors->first('birthday') }}
