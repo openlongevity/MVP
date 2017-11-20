@@ -21,12 +21,12 @@ ol.manager = function () {
 		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},	
 		success: function(result) {
-		    console.log('after save profile');
 		    $("#save_profile_btn").button('reset');
 		    if (result.error) {
 			return;
 		    }
-		
+	
+		    location.href = '/profile';	    
 		},
 	    });
             return false;

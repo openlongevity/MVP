@@ -50,12 +50,11 @@ class ProfileController extends Controller
     public function profileSave(Request $request)
     {
 	$oUser = Auth::user();
-	Log::info('from save profile');
 	$aFields = array('profile_first_name', 'profile_second_name', 'profile_middle_name',
 		'profile_about', 'profile_height', 'profile_marital_status', 'profile_children', 
-		'profile_location', 'profile_location_birth', 'gender', 'birthday');
+		'profile_location', 'profile_location_birth', 'gender', 'birthday', 'name');
 	foreach($aFields as $sField) {
-	    if (isset($request->{$sField}) && !empty($request->{$sField})) {
+	    if (isset($request->{$sField})) {
 		$oUser->{$sField} = $request->{$sField};
 	    }
 	}

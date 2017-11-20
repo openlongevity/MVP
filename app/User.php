@@ -41,9 +41,6 @@ class User extends Authenticatable
      * Returns full name of user.
      */ 
     public function getName() {
-	if ($this->profile_first_name && !empty($this->profile_first_name)) {
-	    return trim($this->profile_second_name.' '.$this->profile_first_name.' '.$this->profile_middle_name);
-	}
 	if ($this->name && !empty($this->name)) {
 	    return $this->name;
 	}
@@ -56,9 +53,12 @@ class User extends Authenticatable
      */ 
     public function getShortName() {
 	if ($this->profile_first_name && !empty($this->profile_first_name)) {
-	    return trim($this->profile_second_name.' '.$this->profile_first_name);
+	    // return trim($this->profile_second_name.' '.$this->profile_first_name);
 	}
 
+	if ($this->name && !empty($this->name) && strpos($this->name, ' ')) {
+	    return substr($this->name, 0, $this->strrevpos($this->name, ' '));
+	}
 	if ($this->name && !empty($this->name)) {
 	    return $this->name;
 	}
@@ -93,7 +93,7 @@ class User extends Authenticatable
     }
     
     /**
-     * Returns amount of ages due to birthday.
+     * Returns lang marital status.
      */ 
     public function getMaritalStatus() {
 	$index = $this->profile_marital_status;
@@ -102,4 +102,22 @@ class User extends Authenticatable
 	}
 	return $this->maritalStatus[$index];
     }
+
+    /**
+     * use strrevpos function in case your php version does not include it
+     */ 
+    private function strrevpos($instr, $needle) {
+	$rev_pos = strpos (strrev($instr), strrev($needle));
+	if ($rev_pos===false) return false;
+	else return strlen($instr) - $rev_pos - strlen($needle);
+    }
+    
+    
+    /**
+     * Returns lang marital statuses.
+     */ 
+    public function getMaritalStatuses() {
+	return $this->maritalStatus;
+    }
+
 }

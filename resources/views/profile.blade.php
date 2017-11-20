@@ -31,13 +31,13 @@
 		</div>
 		<div class="">{{$oUser->profile_location_birth}}</div>
 		<div class="">{{$oUser->birthday}}, {{$oUser->getAges()}}</div>
-	    </div>
 	    <div class="">&nbsp;</div>
-	    <div class="">&nbsp;
+	    <div class="">&nbsp;</div>
+	    <div class="">
 		<table class="profile_table">
 		    <tr class="profile_row_info">
 			<td class="profile_cell_name">Пол:</td>
-			<td>@if ($oUser->sex == 0) Мужской @else Женский @endif</td>
+			<td>@if ($oUser->gender == 0) Мужской @else Женский @endif</td>
 		    </tr>
 		    <tr>
 			<td class="profile_cell_name">Рост:</td>
@@ -73,7 +73,7 @@
 		    </tr>
 		</table>
 	    </div>
-	    <div class="">{{$oUser->profile_about}}</div>
+	    <div class="profile_about">{{$oUser->profile_about}}</div>
 	</div>
     </div>
 </div>

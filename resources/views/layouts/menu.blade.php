@@ -54,7 +54,7 @@
 		    
 		    <div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
-			    <li class="active">
+			    <li class="active" >
 				<a href="/profile">Профиль</a>
 			    </li>
 			    <li data-toggle="collapse" data-target="#my_markers" class="collapsed">
