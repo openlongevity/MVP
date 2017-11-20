@@ -34,3 +34,7 @@ Route::get('/profile', 'ProfileController@profile');
 Route::get('/profile/edit', 'ProfileController@profileEdit');
 Route::post('/profile/save', 'ProfileController@profileSave');
 
+// Profile
+Route::get('/utils/parse_helix', 'UtilsController@parseHelix');
+Route::get('/utils/parse_helix_marker', 'UtilsController@parseHelixMarker');
+Route::get('/utils/parse_helix_marker_name', 'UtilsController@parseHelixAddName');
