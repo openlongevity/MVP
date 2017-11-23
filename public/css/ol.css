@@ -421,4 +421,10 @@ a.btn.btn-xs.btn-ol-edit {
   display: none;
 }
 
+.mymarkers-row {
+  margin-top: 10px;
+  margin-left: 30px;
+  padding-left: 30px;
+}
+
 /*# sourceMappingURL=ol.css.map */

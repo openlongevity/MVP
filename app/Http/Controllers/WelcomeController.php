@@ -16,7 +16,7 @@ class WelcomeController extends Controller
     public function welcome()
     {
 	if (Auth::guard()->check()) {
-	    return view('home');
+	    return redirect('/profile');
 	} else {
 	    return redirect('/login');
 	}
