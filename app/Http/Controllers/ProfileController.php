@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 use Log;
 
+
 class ProfileController extends Controller
 {
     /**

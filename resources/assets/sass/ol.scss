@@ -402,3 +402,18 @@ a.btn.btn-xs.btn-ol-edit {
     padding-left: 30px;
 }
 
+.markers_select {
+    width: 250px;
+}
+
+input.number-input {
+    width: 100px;
+}
+
+
+@media (min-width: 768px) {
+    .modal-xl {
+	width: 80%;
+	max-width:1200px;
+    }
+}
