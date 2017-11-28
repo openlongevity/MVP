@@ -88,7 +88,6 @@ ol.manager = function () {
          */
         this.saveUserMarkers = function() {
             var self = this;
-	    console.log('form:' + $('#add_markers_form').serialize());
 	    $("#save_markers_btn").button('loading');
             $.ajax({
 		url: '/markers/save', 
@@ -99,6 +98,27 @@ ol.manager = function () {
 		},	
 		success: function(result) {
 		    $("#save_markers_btn").button('reset');
+		    location.href = '/my_markers';	    
+		},
+	    });
+            return false;
+        };
+
+        /**
+         * Save user profile to server.
+         */
+        this.saveUserMarker = function() {
+            var self = this;
+	    $("#edit_marker_btn").button('loading');
+            $.ajax({
+		url: '/markers/edit', 
+		type: 'post',
+		data: $('#edit_marker_form').serialize(),
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    $("#edit_marker_btn").button('reset');
 		    location.href = '/my_markers';	    
 		},
 	    });

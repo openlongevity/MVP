@@ -84,4 +84,23 @@ class UserMarkersController extends Controller
 	}
 	return response()->json(array('result' => 'ok'));
     }
+    
+    
+    /**
+     * Save one marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveMarker(Request $request)
+    {
+	$aFields = array('marker_id', 'value', 'lab_units', 'date', 'ref_lab_value_min', 'ref_lab_value_max', 'lab');
+	$oMarker = UserMarker::where('id', $request->id)->first();
+	if ($oMarker) {
+	    foreach($aFields as $sField) {
+		$oMarker->{$sField} = $request->{$sField};
+	    }
+	    $oMarker->Save();
+	}
+	return response()->json(array('result' => 'ok'));
+    }
 }

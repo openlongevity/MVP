@@ -20,7 +20,7 @@
 	    <td>{{$marker->lab}}</td>
 	    <td>{{$marker->date}}</td>
 	    <td>
-		<a href="#" class="edit_marker"><span class="glyphicon glyphicon-edit"></span></a>
+		<a href="#" class="edit_marker" data-marker-id="{{$marker->id}}"><span class="glyphicon glyphicon-edit"></span></a>
 	    </td>
 	</tr>
 	@endforeach

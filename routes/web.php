@@ -43,3 +43,4 @@ Route::get('/utils/parse_helix_marker_name', 'UtilsController@parseHelixAddName'
 Route::get('/my_markers', 'UserMarkersController@userMarkers');
 Route::post('/markers/row', 'UserMarkersController@createRowWithMarker');
 Route::post('/markers/save', 'UserMarkersController@saveMarkers');
+Route::post('/markers/edit', 'UserMarkersController@saveMarker');
