@@ -31,8 +31,13 @@ class UserMarkersController extends Controller
     public function userMarkers()
     {
 	$oUser = Auth::user();
-	$aUserMarkers = UserMarker::where('user_id', $oUser->id)->get();
-	$aMarkers = Marker::get();
+	$aUserMarkers = UserMarker::where('user_id', $oUser->id)->orderBy('date', 'desc')->get();
+	$aMarkers = Marker::get()->keyBy('id');
+	$aNewUserMarkers = array();
+	foreach($aUserMarkers as $oMarker) {
+	    $oMarker->name = $aMarkers[$oMarker->marker_id]->name;
+	    $aNewUserMarkers[] = $oMarker;
+	}
 
 	return view('user_markers', ['oUser' => $oUser, 
 		'markers' => $aUserMarkers,

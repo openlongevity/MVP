@@ -113,13 +113,20 @@
 
 <div class="container profile-content">
     <div class="row mymarkers-row">
-	<div class="profile-full-name">
+	<div class="my-markers-header">
 	    Мои маркеры
-	    <a class="btn btn-xs btn-ol-edit" href="#" id="btn-add-markers">Добавить маркеры</a>
 	</div>
 	@if (!count($markers))
 	    Вы пока не добавили ни одного анализа
+	@else
+	    @include('user_markers_table', [])
 	@endif
+	<div>
+	    &nbsp;
+	</div>
+	<div>
+	    <a class="btn btn-md btn-ol-login" href="#" id="btn-add-markers">Добавить анализы</a>
+	</div>
     </div>
 </div>
 @endsection
