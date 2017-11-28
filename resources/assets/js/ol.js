@@ -125,4 +125,23 @@ ol.manager = function () {
             return false;
         };
 
+        /**
+         * Save user profile to server.
+         */
+        this.deleteMarker = function() {
+            var self = this;
+            $.ajax({
+		url: '/markers/delete', 
+		type: 'post',
+		data: {id: $('#id').val()},
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    location.href = '/my_markers';	    
+		},
+	    });
+            return false;
+        };
+
 };

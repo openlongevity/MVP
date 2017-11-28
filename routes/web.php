@@ -44,3 +44,4 @@ Route::get('/my_markers', 'UserMarkersController@userMarkers');
 Route::post('/markers/row', 'UserMarkersController@createRowWithMarker');
 Route::post('/markers/save', 'UserMarkersController@saveMarkers');
 Route::post('/markers/edit', 'UserMarkersController@saveMarker');
+Route::post('/markers/delete', 'UserMarkersController@deleteMarker');

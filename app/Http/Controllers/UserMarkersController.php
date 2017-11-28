@@ -103,4 +103,19 @@ class UserMarkersController extends Controller
 	}
 	return response()->json(array('result' => 'ok'));
     }
+    
+    
+    /**
+     * Deletes marker by id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteMarker(Request $request)
+    {
+	$oMarker = UserMarker::where('id', $request->id)->first();
+	if ($oMarker) {
+	    $oMarker->Delete();
+	}
+	return response()->json(array('result' => 'ok'));
+    }
 }

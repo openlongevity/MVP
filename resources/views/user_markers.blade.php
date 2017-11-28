@@ -84,6 +84,15 @@
 		    e.preventDefault();
 		    return false;
 		});
+		$(document).on("click", "#delete-marker", function(e) {
+		    // show confirm delete modal
+		    $('#confirm-delete').modal();
+		    return false;
+		});
+		$(document).on("click", "#delete-marker-forever", function(e) {
+		    olManager.deleteMarker();
+		    return false;
+		});
 	    });
 	});
 
@@ -227,6 +236,7 @@
 	    <div>
 		<button class="btn btn-md btn-ol-login" value="Сохранить" id="edit_marker_btn"  data-loading-text="<i class='fa fa-spinner fa-spin'></i> Загрузка...">Сохранить</button>
                 <button type="button" class="btn btn-md btn-ol-cancel" data-dismiss="modal" aria-label="Close">Закрыть</button>
+                <button type="button" class="btn btn-md btn-ol-delete" id="delete-marker">Удалить маркер</button>
 		<input id="submit_handle_edit_marker" type="submit" style="display: none">
 		<input name="id" type="hidden" id="id"/>
 	    </div>
@@ -234,6 +244,22 @@
         </div>
     </div>
 </div>
+</div>
+
+
+<!-- Modal for deleting marker. -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Вы действительно хотите удалить данный маркер?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-md btn-ol-cancel" data-dismiss="modal">Отмена</button>
+                <a class="btn  btn-md btn-ol-delete" id="delete-marker-forever">Удалить</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container profile-content">
