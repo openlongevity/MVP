@@ -462,4 +462,10 @@ input.number-input {
   background-color: #dcf5cb;
 }
 
+.table-header th {
+  color: #a8a8a8;
+  font-weight: 300;
+  font-size: 90%;
+}
+
 /*# sourceMappingURL=ol.css.map */

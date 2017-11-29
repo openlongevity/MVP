@@ -1,6 +1,6 @@
 <table class="table">
     <thead>
-	<tr>
+	<tr class="table-header">
 	    <th>Название</th>
 	    <th>Показание</th>
 	    <th>Референс</th>

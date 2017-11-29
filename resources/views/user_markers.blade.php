@@ -176,7 +176,7 @@
         </div>
 	<div class="modal-body">
 	    <form id="edit_marker_form">
-	    <table class="table" id="add_marker_table">
+	    <table class="table">
 		<thead>
 		    <tr>
 			<th>
