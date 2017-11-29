@@ -454,4 +454,12 @@ input.number-input {
   font-weight: 300;
 }
 
+.marker-fail {
+  background-color: #ffcdce;
+}
+
+.marker-success {
+  background-color: #dcf5cb;
+}
+
 /*# sourceMappingURL=ol.css.map */

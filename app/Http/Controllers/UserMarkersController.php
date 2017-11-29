@@ -79,6 +79,15 @@ class UserMarkersController extends Controller
 		foreach($aFields as $sField) {
 		    $oMarker->{$sField} = $request->{$sField."_".$i};
 		}
+		$oMarker->fail = 0;
+		// Check min value.
+		if (isset($request->{"ref_lab_value_min_".$i}) && $request->{"value_".$i} < $request->{"ref_lab_value_min_".$i}) {
+		    $oMarker->fail = 1;
+		}
+		// Check max value.
+		if (isset($request->{"ref_lab_value_max_".$i}) && $request->{"value_".$i} > $request->{"ref_lab_value_max_".$i}) {
+		    $oMarker->fail = 1;
+		}
 		$oMarker->Save();
 	    }
 	}
@@ -98,6 +107,15 @@ class UserMarkersController extends Controller
 	if ($oMarker) {
 	    foreach($aFields as $sField) {
 		$oMarker->{$sField} = $request->{$sField};
+	    }
+	    $oMarker->fail = 0;
+	    // Check min value.
+	    if (isset($request->ref_lab_value_min) && $request->value < $request->ref_lab_value_min) {
+		$oMarker->fail = 1;
+	    }
+	    // Check max value.
+	    if (isset($request->ref_lab_value_max) && $request->value > $request->ref_lab_value_max) {
+		$oMarker->fail = 1;
 	    }
 	    $oMarker->Save();
 	}

@@ -15,7 +15,7 @@
 	<tr>
 	    <td>{{$marker->name}}</td>
 	    <td>{{$marker->value}} {{$marker->lab_units}}</td>
-	    <td>{{$marker->ref_lab_value_min}} - {{$marker->ref_lab_value_max}} {{$marker->lab_units}}</td>
+	    <td class="@if ($marker->fail) marker-fail @else marker-success @endif">{{$marker->ref_lab_value_min}} - {{$marker->ref_lab_value_max}} {{$marker->lab_units}}</td>
 	    <td></td>
 	    <td>{{$marker->lab}}</td>
 	    <td>{{$marker->date}}</td>
