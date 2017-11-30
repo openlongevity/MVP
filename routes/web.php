@@ -45,3 +45,7 @@ Route::post('/markers/row', 'UserMarkersController@createRowWithMarker');
 Route::post('/markers/save', 'UserMarkersController@saveMarkers');
 Route::post('/markers/edit', 'UserMarkersController@saveMarker');
 Route::post('/markers/delete', 'UserMarkersController@deleteMarker');
+
+
+// Panel.
+Route::get('/panel_ol11', 'PanelController@panel');
