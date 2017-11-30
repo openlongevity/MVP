@@ -131,7 +131,7 @@ a.btn.btn-xs.btn-ol-cancel {
 
 .profile-content {
   background-color: #fff;
-  padding: -50px;
+  padding: 0px;
 }
 
 .main-row {
@@ -147,7 +147,7 @@ a.btn.btn-xs.btn-ol-cancel {
   background-color: #1a1a1a;
   top: 0px;
   height: 100%;
-  width: 215px;
+  width: 190px;
   color: #e1ffff;
 }
 
@@ -312,7 +312,7 @@ a.btn.btn-xs.btn-ol-cancel {
 }
 
 .profile-row {
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .profile-full-name {
@@ -429,9 +429,9 @@ a.btn.btn-xs.btn-ol-edit {
 }
 
 .mymarkers-row {
-  margin-top: 10px;
-  margin-left: 15px;
-  padding-left: 15px;
+  margin-top: 5px;
+  margin-left: 5px;
+  padding-left: 5px;
 }
 
 .markers_select {
@@ -486,6 +486,10 @@ input.number-input {
   height: 35px;
   border-right: 1px solid #d3d3d3;
   margin-top: 10px;
+}
+
+.ol-row {
+  margin-right: 0px;
 }
 
 /*# sourceMappingURL=ol.css.map */

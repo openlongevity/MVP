@@ -44,7 +44,7 @@
 		</div>
 		<hr class="top-menu-hr"/>
 
-	<div class="row main-row">
+	<div class="row ol-row">
 	    <div class="col-md-2">
 		<div class="nav-side-menu">
 

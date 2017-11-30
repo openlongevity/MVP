@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-<div class="container profile-content">
+<div class="profile-content">
     <div class="row profile-row">
         <div class="col-md-2">
 	    <img src="{{$oUser->getAvatarLink()}}" class="img-circle" alt="" height="150" width="150"/>

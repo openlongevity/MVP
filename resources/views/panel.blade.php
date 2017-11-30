@@ -26,7 +26,7 @@
 
 @section('content')
 
-<div class="container profile-content">
+<div class="profile-content">
     <div class="mymarkers-row">
 	<div class="my-markers-header">
 	    Панель Open Longevity 1.1

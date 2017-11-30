@@ -11,7 +11,7 @@ use Auth;
 use Log;
 use Illuminate\Support\Facades\View;
 
-class PanelController extends Controller
+class ErrorController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,20 +28,11 @@ class PanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function panel()
+    public function notaccess()
     {
 	$oUser = Auth::user();
-	return view('panel', ['oUser' => $oUser, 'active' => 'panel_ol11_link']);
-    }
-    
-    /**
-     * Show admin page with list of panels.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function panels()
-    {
-	return view('panels');
+	return view('errors/notaccess', ['oUser' => $oUser, 'active' => 'profile_link']);
     }
 }
+
 

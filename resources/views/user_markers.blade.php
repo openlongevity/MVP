@@ -262,8 +262,7 @@
     </div>
 </div>
 
-<div class="container profile-content">
-    <div class="mymarkers-row">
+<div class="profile-content">
 	<div class="my-markers-header">
 	    Мои маркеры
 	</div>
@@ -278,7 +277,6 @@
 	<div>
 	    <a class="btn btn-md btn-ol-login" href="#" id="btn-add-markers">Добавить анализы</a>
 	</div>
-    </div>
 </div>
 @endsection
 
