@@ -21,24 +21,24 @@
      <div id="app">
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 		    <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            <li class="right-menu-profile-link">
+                                <a href="/profile">
                                     <span class="right-link">{{ Auth::user()->getShortName() }}</span> <img src="{{$oUser->getAvatarLink()}}" class="img-circle" alt="" height="35" width="35"/>
-                                </a>
+				</a>
 
-                                <ul class="dropdown-menu">
-                                    <li>
+			    </li>
+			    <li>
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-circle logout-left" alt="" height="35" width="0"/>
+			    </li>
+                            <li class="btn-logout">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Выход
-                                        </a>
-
+						<span class="right-link">Выход</span><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-circle" alt="" height="35" width="0"/>
+					</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                    </li>
-                                </ul>
 			    </li>
 		    </ul>
 		</div>

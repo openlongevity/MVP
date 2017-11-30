@@ -263,7 +263,7 @@
 </div>
 
 <div class="container profile-content">
-    <div class="row mymarkers-row">
+    <div class="mymarkers-row">
 	<div class="my-markers-header">
 	    Мои маркеры
 	</div>
