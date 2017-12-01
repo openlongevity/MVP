@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+	<tr class="table-header">
+	    <th>Название</th>
+	    <th>Количество маркеров</th>
+	    <th></th>
+	</tr>
+    </thead>
+    <tbody>
+	@foreach($panels as $panel)
+	<tr>
+	    <td>{{$panel->name}}</td>
+	    <td>0</td>
+	    <td>
+		<a href="#" class="edit_panel" data-marker-id="{{$panel->id}}"><span class="glyphicon glyphicon-edit"></span></a>
+	    </td>
+	</tr>
+	@endforeach
+    </tbody>
+</table>
+

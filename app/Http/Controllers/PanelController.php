@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
+use App\Panel;
 use App\UserMarker;
 use App\Marker;
 use Auth;
@@ -41,7 +42,12 @@ class PanelController extends Controller
      */
     public function panels()
     {
-	return view('panels');
+	$oUser = Auth::user();
+	$aPanels = Panel::get();
+	return view('admin/panels', [
+		'oUser' => $oUser, 
+		'panels' => $aPanels,
+		'active' => 'panel_ol11_link']);
     }
 }
 
