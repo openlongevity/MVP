@@ -28,12 +28,15 @@
 
 <div class="profile-content">
     <div class="mymarkers-row">
-	<div class="my-markers-header">
+	<div class="col-md-8 my-markers-header">
 	    {!! $oPanel->name !!}
 	</div>
-	<div>
+	<div class="col-md-8 tabs">
+	    <a class="btn btn-md btn-panel-tab" value="О панели" id="save_profile_btn" href="/panel/{{$oPanel->id}}">О панели</a>
+	    <a class="btn btn-md btn-panel-tab-not-active" value="Маркеры и трактовка" id="save_profile_btn" href="/panel/markers/{{$oPanel->id}}">Маркеры и трактовка</a>
+	    
 	</div>
-	<div class="col-md-10">
+	<div class="col-md-8">
 	    {!! $oPanel->description !!}
 	</div>
     </div>

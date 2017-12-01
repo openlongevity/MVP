@@ -492,4 +492,19 @@ input.number-input {
   margin-right: 0px;
 }
 
+.tabs {
+  margin: 15px 0px 15px 0px;
+}
+
+.btn-panel-tab {
+  background-color: #ffb413;
+  color: #000;
+}
+
+.btn-panel-tab-not-active {
+  background-color: #fff;
+  color: #000 !important;
+  border: 1px solid #ffb413 !important;
+}
+
 /*# sourceMappingURL=ol.css.map */
