@@ -29,10 +29,15 @@ class PanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function panel()
+    public function panel(Request $request)
     {
 	$oUser = Auth::user();
-	return view('panel', ['oUser' => $oUser, 'active' => 'panel_ol11_link']);
+	$oPanel = Panel::where('id', $request->id)->first();
+	return view('panel', [
+		'oUser' => $oUser, 
+		'oPanel' => $oPanel, 
+		'active' => 'panel_ol11_link'
+	]);
     }
     
     /**
@@ -49,5 +54,42 @@ class PanelController extends Controller
 		'panels' => $aPanels,
 		'active' => 'panel_ol11_link']);
     }
+    
+    /**
+     * Show page for editing panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editPanelPage(Request $request)
+    {
+	$oUser = Auth::user();
+	$oPanel = Panel::where('id', $request->id)->first();
+	return view('admin/panel_edit', [
+		'oUser' => $oUser, 
+		'oPanel' => $oPanel, 
+		'active' => 'panel_ol11_link']);
+    }
+    
+    /**
+     * Save info about panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function savePanel(Request $request)
+    {
+	$oPanel = Panel::where('id', $request->id)->first();
+	$aFields = array('name', 'description');
+
+	if ($oPanel) {
+	    foreach($aFields as $sField) {
+		$oPanel->{$sField} = $request->{$sField};
+	    }
+
+	    $oPanel->Save();
+	}
+
+	return response()->json(array('result' => 'ok'));
+    }
+    
 }
 

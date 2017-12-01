@@ -29,11 +29,13 @@
 <div class="profile-content">
     <div class="mymarkers-row">
 	<div class="my-markers-header">
-	    Панель Open Longevity 1.1
+	    {!! $oPanel->name !!}
+	</div>
+	<div>
+	</div>
+	<div class="col-md-10">
+	    {!! $oPanel->description !!}
 	</div>
     </div>
 </div>
 @endsection
-
-
-

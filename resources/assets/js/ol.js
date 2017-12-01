@@ -84,7 +84,7 @@ ol.manager = function () {
 	};
  
         /**
-         * Save user profile to server.
+         * Save user markers to server.
          */
         this.saveUserMarkers = function() {
             var self = this;
@@ -139,6 +139,27 @@ ol.manager = function () {
 		},	
 		success: function(result) {
 		    location.href = '/my_markers';	    
+		},
+	    });
+            return false;
+        };
+
+        /**
+         * Save panel info.
+         */
+        this.savePanelInfo = function() {
+            var self = this;
+	    $("#save_panel_btn").button('loading');
+            $.ajax({
+		url: '/admin/panel/save', 
+		type: 'post',
+		data: $('#panel-form').serialize(),
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    $("#save_panel_btn").button('reset');
+		    $.notify("Данные сохранены успешно!", "success");
 		},
 	    });
             return false;

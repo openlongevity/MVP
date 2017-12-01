@@ -19,6 +19,7 @@ elixir(function(mix) {
     mix.copy('resources/assets/js/marino-scripts','public/js/marino-scripts');
     mix.copy('resources/assets/js/bower_components','public/js');
     mix.copy('resources/assets/js/ol.js','public/js');
+    mix.copy('resources/assets/js/notify.js','public/js');
 
     mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js','public/js/');
     mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css','public/css/');

@@ -61,7 +61,7 @@
 				<a href="/my_markers">Мои маркеры</a>
 			    </li>  
 			    <li id="panel_ol11_link">
-				<a href="/panel_ol11">Панель OL 1.1</a>
+				<a href="/panel/1">Панель OL 1.1</a>
 			    </li>  
 			</ul>
 		    </div>
@@ -92,7 +92,7 @@
 		    location.href = '/my_markers';
 		});
 		$(document).on("click", "#panel_ol11_link", function(e) {
-		    location.href = '/panel_ol11';
+		    location.href = '/panel/1';
 		});
 
 

@@ -48,7 +48,7 @@ Route::post('/markers/delete', 'UserMarkersController@deleteMarker');
 
 
 // Panel.
-Route::get('/panel_ol11', 'PanelController@panel');
+Route::get('/panel/{id}', 'PanelController@panel');
 // API for tasks version 2.0
 Route::group([
 	    'middleware' => ['check_admin'],
@@ -56,6 +56,12 @@ Route::group([
         function() {
             Route::get('admin/panels', [
                 'uses' => 'PanelController@panels'
+            ]);
+            Route::get('admin/panel/edit/{id}', [
+                'uses' => 'PanelController@editPanelPage'
+            ]);
+            Route::post('admin/panel/save', [
+                'uses' => 'PanelController@savePanel'
             ]);
         }
 );

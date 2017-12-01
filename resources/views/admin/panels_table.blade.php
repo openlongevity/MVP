@@ -12,7 +12,7 @@
 	    <td>{{$panel->name}}</td>
 	    <td>0</td>
 	    <td>
-		<a href="#" class="edit_panel" data-marker-id="{{$panel->id}}"><span class="glyphicon glyphicon-edit"></span></a>
+		<a href="/admin/panel/edit/{{$panel->id}}" class="edit_panel" data-marker-id="{{$panel->id}}"><span class="glyphicon glyphicon-edit"></span></a>
 	    </td>
 	</tr>
 	@endforeach

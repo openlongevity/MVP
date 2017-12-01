@@ -9,12 +9,8 @@
     <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <script type="text/javascript">
-	var olManager = new ol.manager();
 	jQuery(function($) {
 	    $(document).ready( function () {
-		$(document).on("click", "#btn-add-markers", function(e) {
-		});
-
 	    });
 	});
 
