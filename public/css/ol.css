@@ -507,4 +507,12 @@ input.number-input {
   border: 1px solid #ffb413 !important;
 }
 
+.nav-menu-not-link {
+  cursor: auto;
+}
+
+#admin_panels_link {
+  margin-top: 25px;
+}
+
 /*# sourceMappingURL=ol.css.map */

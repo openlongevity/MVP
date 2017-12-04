@@ -52,7 +52,7 @@ class PanelController extends Controller
 	return view('admin/panels', [
 		'oUser' => $oUser, 
 		'panels' => $aPanels,
-		'active' => 'panel_ol11_link']);
+		'active' => 'admin_panels_link']);
     }
     
     /**
@@ -89,6 +89,22 @@ class PanelController extends Controller
 	}
 
 	return response()->json(array('result' => 'ok'));
+    }
+    
+    /**
+     * Show page with panel user markers.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function panelMarkers(Request $request)
+    {
+	$oUser = Auth::user();
+	$oPanel = Panel::where('id', $request->id)->first();
+	return view('panel_markers', [
+		'oUser' => $oUser, 
+		'oPanel' => $oPanel, 
+		'active' => 'panel_ol11_link'
+	]);
     }
     
 }

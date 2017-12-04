@@ -29,13 +29,21 @@
 	    {!! $oPanel->name !!}
 	</div>
 	<div class="col-md-8 tabs">
-	    <a class="btn btn-md btn-panel-tab" value="О панели" id="save_profile_btn" href="/panel/{{$oPanel->id}}">О панели</a>
-	    <a class="btn btn-md btn-panel-tab-not-active" value="Маркеры и трактовка" id="save_profile_btn" href="/panel/markers/{{$oPanel->id}}">Маркеры и трактовка</a>
+	    <a class="btn btn-md btn-panel-tab-not-active" value="О панели" id="save_profile_btn" href="/panel/{{$oPanel->id}}">О панели</a>
+	    <a class="btn btn-md btn-panel-tab" value="Маркеры и трактовка" id="save_profile_btn" href="/panel/markers/{{$oPanel->id}}">Маркеры и трактовка</a>
 	    
 	</div>
 	<div class="col-md-8">
-	    {!! $oPanel->description !!}
+	    Ниже вы можете добавить результаты своих анализов, внести их вручную.
+	</div>
+	<div class="col-md-8">
+	    &nbsp;
+	</div>
+	<div class="col-md-8">
+	    <a class="btn btn-md btn-ol-login" href="#" id="add_panel_series">Внести показания вручную</a>
+		
 	</div>
     </div>
 </div>
 @endsection
+

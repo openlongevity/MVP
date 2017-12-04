@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PanelMarker extends Model {
 
     //
-    protected $table = 'panels';
+    protected $table = 'panel_markers';
     protected $primaryKey = 'id';
 
 }

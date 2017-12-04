@@ -62,7 +62,18 @@
 			    </li>  
 			    <li id="panel_ol11_link">
 				<a href="/panel/1">Панель OL 1.1</a>
-			    </li>  
+			    </li>
+			    @if ($oUser && $oUser->admin == 1)
+				<li id="admin_panels_link">
+				    <a href="/admin/panels">Панели</a>
+				</li>
+				<li id="admin_markers_link">
+				    <a href="/admin/markers">Маркеры</a>
+				</li>
+				<li id="admin_requests_link">
+				    <a href="/admin/requests">Запросы на трактовку</a>
+				</li>
+			    @endif
 			</ul>
 		    </div>
 		</div>
@@ -95,7 +106,16 @@
 		    location.href = '/panel/1';
 		});
 
+		$(document).on("click", "#admin_panels_link", function(e) {
+		    location.href = '/admin/panels';
+		});
 
+		$(document).on("click", "#admin_markers_link", function(e) {
+		    location.href = '/admin/markers';
+		});
+		$(document).on("click", "#admin_requests_link", function(e) {
+		    location.href = '/admin/requests';
+		});
 	    });
 	});
 
