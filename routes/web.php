@@ -69,6 +69,9 @@ Route::group([
             Route::get('admin/users', [
                 'uses' => 'UsersController@users'
             ]);
+            Route::get('admin/markers', [
+                'uses' => 'MarkersController@markers'
+            ]);
         }
 );
 
