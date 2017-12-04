@@ -21,7 +21,11 @@ class Panel extends Model {
      */ 
     public function getMarkers() {
 	if (!$this->aMarkers) {
-	    $this->aMarkers = Marker::whereIn('id', PanelMarker::where('panel_id', $this->id)->pluck('marker_id')->toArray())->get();
+	    $aMarkers = Marker::whereIn('id', PanelMarker::where('panel_id', $this->id)
+							    ->pluck('marker_id')
+							    ->toArray())
+		    ->get();
+	    $this->aMarkers = $aMarkers;
 	}
 
 	return $this->aMarkers;

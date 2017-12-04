@@ -165,4 +165,25 @@ ol.manager = function () {
             return false;
         };
 
+ 
+        /**
+         * Save user markers to server.
+         */
+        this.saveUserPanelMarkers = function(panel_id) {
+            var self = this;
+	    $("#save_panel_markers_btn").button('loading');
+            $.ajax({
+		url: '/panel/markers/save', 
+		type: 'post',
+		data: $('#add_markers_form').serialize(),
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    $("#save_panel_markers_btn").button('reset');
+		    location.href = '/panel/markers/' + panel_id; 
+		},
+	    });
+            return false;
+        };
 };

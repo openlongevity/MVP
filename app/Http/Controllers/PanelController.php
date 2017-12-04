@@ -6,8 +6,11 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use App\Panel;
+use App\PanelMarker;
 use App\UserMarker;
 use App\Marker;
+use App\PanelUserSeries;
+use App\PanelUserSeriesMarker;
 use Auth;
 use Log;
 use Illuminate\Support\Facades\View;
@@ -100,11 +103,81 @@ class PanelController extends Controller
     {
 	$oUser = Auth::user();
 	$oPanel = Panel::where('id', $request->id)->first();
+	$aSeries = PanelUserSeries::
+		where('panel_id', $request->id)
+		->where('user_id', $oUser->id)
+		->get();
+	$aRes = array();
+	$aSeriesIds = array();
+	foreach($aSeries as $oSeries) {
+	    $aRes[$oSeries->id] = array('date' => $oSeries->date, 'markers' => array());
+	    $aSeriesIds[] = $oSeries->id;
+	}
+	
+	$aUserPanelMarkers = PanelUserSeriesMarker::whereIn('series_id', $aSeriesIds)->get();
+	$aUserPanelMarkersIds = array();
+	foreach($aUserPanelMarkers as $oUserPanelMarker) {
+	    $aUserPanelMarkersIds[] = $oUserPanelMarker->user_marker_id;
+	}
+	$aMarkers = UserMarker::whereIn('id', $aUserPanelMarkersIds)->get()->keyBy('id');
+
+	foreach($aUserPanelMarkers as $oUserPanelMarker) {
+	    $oMarker = $aMarkers[$oUserPanelMarker->user_marker_id];
+	    $aRes[$oUserPanelMarker->series_id]['markers'][$oMarker->marker_id] = $oMarker;
+	}
+
 	return view('panel_markers', [
 		'oUser' => $oUser, 
 		'oPanel' => $oPanel, 
+		'aRes' => $aRes,
+		'aSeries' => $aSeries,
 		'active' => 'panel_ol11_link'
 	]);
+    }
+    
+    
+    /**
+     * Save user panel markers.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveUserPanelMarkers(Request $request)
+    {
+	$oUser = Auth::user();
+	
+	// Create panel user seris.
+	$oSeries = new PanelUserSeries();
+	$oSeries->panel_id = $request->id;
+	$oSeries->user_id = $oUser->id;
+	$oSeries->date = date('Y-m-d');
+	$oSeries->Save();
+
+
+	$oPanel = Panel::where('id', $request->id)->first();
+	$aPanelMarkers = PanelMarker::where('panel_id', $request->id)
+		->get();
+	foreach($aPanelMarkers as $oPanelMarker) {
+	    if (isset($request->{"marker_".$oPanelMarker->marker_id}) 
+		&& !empty($request->{"marker_".$oPanelMarker->marker_id})) {
+		// Create user marker;
+		$oMarker = new UserMarker();
+		$oMarker->user_id = $oUser->id;
+		$oMarker->marker_id = $oPanelMarker->marker_id;
+		$oMarker->value = $request->{"marker_".$oPanelMarker->marker_id};
+		$oMarker->fail = 0;
+		$oMarker->Save();
+
+		// Connect marker to series.
+		$oMSeries = new PanelUserSeriesMarker();
+		$oMSeries->series_id = $oSeries->id;
+		$oMSeries->user_marker_id = $oMarker->id;
+		$oMSeries->Save();
+
+	    }
+	}
+	
+	
+	return response()->json(array('result' => 'ok'));
     }
     
 }
