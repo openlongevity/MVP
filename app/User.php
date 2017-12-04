@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Helpers\Helper;
+use App\UserMarker;
 
 class User extends Authenticatable
 {
@@ -118,6 +119,13 @@ class User extends Authenticatable
      */ 
     public function getMaritalStatuses() {
 	return $this->maritalStatus;
+    }
+
+    /**
+     * Returns list of user markers.
+     */ 
+    public function getMarkers() {
+	return UserMarker::where('user_id', $this->id)->get();
     }
 
 }

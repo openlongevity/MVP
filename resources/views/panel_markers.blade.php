@@ -43,16 +43,6 @@
 	<div class="modal-body">
 	    <form id="add_markers_form">
 	    <table class="table" id="user_markers_table">
-		<thead>
-		    <tr>
-			<th>
-			</th>
-			<th>
-			</th>
-			<th>
-			</th>
-		    </tr>
-		</thead>
 		<tbody>
 		    @foreach($oPanel->getMarkers() as $marker)
 		    <tr>
@@ -97,21 +87,26 @@
 	    &nbsp;
 	</div>
 	<div class="col-md-8">
+	    <a class="btn btn-md btn-ol-login" href="#" id="add_pdf_series">Выбрать PDF файл</a>
 	    <a class="btn btn-md btn-ol-login" href="#" id="add_panel_series">Внести показания вручную</a>
 	</div>
 	<div class="col-md-8">
 	    &nbsp;
 	</div>
+	<div class="col-md-8 my-markers-header">
+	    Анализы по панели
+	</div>
 	<div class="col-md-8">
 	    <table class="table">
 		<thead>
-		    <tr>
-			<td>
-			</td>
+		    <tr class="table-header">
+			<th>
+			    Название
+			</th>
 			@foreach($aSeries as $oSeries)
-			    <td>
+			    <th>
 				{{$aRes[$oSeries->id]['date']}}
-			    </td>
+			    </th>
 			@endforeach
 		    </tr>
 		</thead>

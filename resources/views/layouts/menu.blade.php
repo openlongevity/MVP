@@ -67,11 +67,14 @@
 				<li id="admin_panels_link">
 				    <a href="/admin/panels">Панели</a>
 				</li>
+				<li id="admin_users_link">
+				    <a href="/admin/users">Пользователи</a>
+				</li>
 				<li id="admin_markers_link">
 				    <a href="/admin/markers">Маркеры</a>
 				</li>
 				<li id="admin_requests_link">
-				    <a href="/admin/requests">Запросы на трактовку</a>
+				    <a href="/admin/requests">Анализы по панели</a>
 				</li>
 			    @endif
 			</ul>
@@ -115,6 +118,9 @@
 		});
 		$(document).on("click", "#admin_requests_link", function(e) {
 		    location.href = '/admin/requests';
+		});
+		$(document).on("click", "#admin_users_link", function(e) {
+		    location.href = '/admin/users';
 		});
 	    });
 	});

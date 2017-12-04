@@ -51,7 +51,8 @@ Route::post('/markers/delete', 'UserMarkersController@deleteMarker');
 Route::get('/panel/{id}', 'PanelController@panel');
 Route::get('/panel/markers/{id}', 'PanelController@panelMarkers');
 Route::post('/panel/markers/save', 'PanelController@saveUserPanelMarkers');
-// API for tasks version 2.0
+
+// Admin
 Route::group([
 	    'middleware' => ['check_admin'],
         ],
@@ -64,6 +65,9 @@ Route::group([
             ]);
             Route::post('admin/panel/save', [
                 'uses' => 'PanelController@savePanel'
+            ]);
+            Route::get('admin/users', [
+                'uses' => 'UsersController@users'
             ]);
         }
 );
