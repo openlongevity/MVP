@@ -6,6 +6,7 @@ Homestead.json
 *.sw*
 *~
 *.log
+public/
 public/js/
 public/css/
 public/images/

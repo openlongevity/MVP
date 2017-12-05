@@ -72,6 +72,12 @@ Route::group([
             Route::get('admin/markers', [
                 'uses' => 'MarkersController@markers'
             ]);
+            Route::get('admin/requests', [
+                'uses' => 'PanelController@requests'
+            ]);
+            Route::post('admin/series/files/interpretation/add/{id}', [
+                'uses' => 'PanelController@addInterpretationFile'
+            ]);
         }
 );
 

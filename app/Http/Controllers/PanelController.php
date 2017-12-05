@@ -180,5 +180,45 @@ class PanelController extends Controller
 	return response()->json(array('result' => 'ok'));
     }
     
+    /**
+     * Show page with panel info.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function requests(Request $request)
+    {
+	$oUser = Auth::user();
+	$aSeries = PanelUserSeries::orderBy('date', 'desc')->get();
+	$aPanels = Panel::get()->keyBy('id');
+	$aUsers = User::get()->keyBy('id');
+	return view('admin/requests', [
+		'oUser' => $oUser, 
+		'aSeries' => $aSeries, 
+		'aPanels' => $aPanels, 
+		'aUsers' => $aUsers, 
+		'active' => 'admin_requests_link'
+	]);
+    }
+    
+    /**
+     * Show page with panel info.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addInterpretationFile(Request $request)
+    {
+	$pdf = $request->{"input-interpretation-file"};
+	// Save file.  
+        $destinationPath = "interpretation_files/";
+	$filename = $request->id."_".$pdf->getClientOriginalName();
+	$pdf->move($destinationPath, $filename);
+
+	$oSeries = PanelUserSeries::where('id', $request->id)->first();
+	$oSeries->interpretation_file = $filename;
+	$oSeries->Save();
+
+	return response()->json(array('result' => 'ok'));
+    }
+    
 }
 
