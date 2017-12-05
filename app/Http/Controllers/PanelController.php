@@ -110,7 +110,7 @@ class PanelController extends Controller
 	$aRes = array();
 	$aSeriesIds = array();
 	foreach($aSeries as $oSeries) {
-	    $aRes[$oSeries->id] = array('date' => $oSeries->date, 'markers' => array());
+	    $aRes[$oSeries->id] = array('date' => $oSeries->date, 'interpretation_file' => $oSeries->interpretation_file, 'markers' => array());
 	    $aSeriesIds[] = $oSeries->id;
 	}
 	

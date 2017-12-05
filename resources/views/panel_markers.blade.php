@@ -164,6 +164,9 @@
 			</th>
 			@foreach($aSeries as $oSeries)
 			    <th>
+				@if ($aRes[$oSeries->id]['interpretation_file'])
+				    <a href="/interpretation_files/{{$aRes[$oSeries->id]['interpretation_file']}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+				@endif
 				{{$aRes[$oSeries->id]['date']}}
 			    </th>
 			@endforeach
