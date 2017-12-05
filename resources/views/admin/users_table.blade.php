@@ -14,7 +14,7 @@
 	@foreach($aUsers as $user)
 	<tr>
 	    <td><a href="/admin/users/profile/{{$user->id}}"><img src="{{$user->getAvatarLink()}}" class="img-circle" width="40" height="40" /> 
-		{{$user->name}}</a>
+		{{$user->getName()}}</a>
 	    </td>
 	    <td>{{$user->email}}</td>
 	    <td>{{$user->getMaritalStatus()}}</td>

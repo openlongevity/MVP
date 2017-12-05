@@ -12,7 +12,7 @@
 	@foreach($aSeries as $series)
 	<tr>
 	    <td><a href="/panel/{{$aPanels[$series->panel_id]->id}}">{{$aPanels[$series->panel_id]->name}}</a></td>
-	    <td><a href="/admin/users/profile/{{$aUsers[$series->user_id]->id}}">{{$aUsers[$series->user_id]->name}}</a></td>
+	    <td><a href="/admin/users/profile/{{$aUsers[$series->user_id]->id}}">{{$aUsers[$series->user_id]->getName()}}</a></td>
 	    <td>
 		@if ($series->data_file)
 		    <a href="/files/data/{{$series->id}}">Файл с данными</a>

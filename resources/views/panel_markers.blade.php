@@ -156,6 +156,7 @@
 	    Анализы по панели
 	</div>
 	<div class="col-md-8">
+	    @if (count($aSeries))
 	    <table class="table">
 		<thead>
 		    <tr class="table-header">
@@ -189,6 +190,7 @@
 		    @endforeach
 		</tbody>
 	    </table>
+	    @endif
 	</div>
     </div>
 </div>
