@@ -7,9 +7,6 @@
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <script type="text/javascript">
 	var olManager = new ol.manager();
@@ -68,7 +65,9 @@
 		    $('#ref_lab_value_max').val(marker.ref_lab_value_max);
 		    $('#lab').val(marker.lab);
 		    $('#lab_units').val(marker.lab_units);
-		    $('#date').val(marker.date);
+		    if (marker.date)
+			$('#date').val(marker.date);
+		    $('#date').datetimepicker({format: 'YYYY-MM-DD', defaultDate: moment(), ignoreReadonly: true});
 		    
 		    // show modal
 		    $('#edit-marker-modal').modal();
