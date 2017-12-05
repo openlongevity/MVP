@@ -88,3 +88,8 @@ Route::group([
 
 // Errors.
 Route::get('/notaccess', 'ErrorController@notaccess');
+
+
+// Access to files.
+Route::get('/files/data/{series_id}', 'FilesController@getDataFile');
+Route::get('/files/interpretation/{series_id}', 'FilesController@getInterpretationFile');

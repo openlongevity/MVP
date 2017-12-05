@@ -15,14 +15,14 @@
 	    <td><a href="/admin/users/profile/{{$aUsers[$series->user_id]->id}}">{{$aUsers[$series->user_id]->name}}</a></td>
 	    <td>
 		@if ($series->data_file)
-		    <a href="/data_files/{{$series->data_file}}">Файл с данными</a>
+		    <a href="/files/data/{{$series->id}}">Файл с данными</a>
 		@else
 		    Добавлены вручную
 		@endif
 	    </td>
 	    <td>
 		@if ($series->interpretation_file)
-		    <a href="/interpretation_files/{{$series->interpretation_file}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+		    <a href="/files/interpretation/{{$series->id}}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 		    (<a href="#" class="add-interpretation-file" data-series-id="{{$series->id}}">заменить</a>)
 		@else
 		    <a href="#" class="add-interpretation-file" data-series-id="{{$series->id}}">Добавить</a>
