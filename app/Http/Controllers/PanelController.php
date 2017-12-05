@@ -147,10 +147,10 @@ class PanelController extends Controller
 	
 	// Create panel user seris.
 	$oSeries = new PanelUserSeries();
-	$oSeries->panel_id = $request->id;
-	$oSeries->user_id = $oUser->id;
-	$oSeries->date = date('Y-m-d');
-	$oSeries->Save();
+	$oseries->panel_id = $request->id;
+	$oseries->user_id = $oUser->id;
+	$oseries->date = date('y-m-d');
+	$oseries->save();
 
 
 	$oPanel = Panel::where('id', $request->id)->first();
@@ -201,7 +201,7 @@ class PanelController extends Controller
     }
     
     /**
-     * Show page with panel info.
+     * Adds file with interpretation.
      *
      * @return \Illuminate\Http\Response
      */
@@ -215,6 +215,34 @@ class PanelController extends Controller
 
 	$oSeries = PanelUserSeries::where('id', $request->id)->first();
 	$oSeries->interpretation_file = $filename;
+	$oSeries->Save();
+
+	return response()->json(array('result' => 'ok'));
+    }
+    
+    /**
+     * Adds file with interpretation.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addDataFile(Request $request)
+    {
+	$oUser = Auth::user();
+	
+	// Create panel user seris.
+	$oSeries = new PanelUserSeries();
+	$oSeries->panel_id = $request->panel_id;
+	$oSeries->user_id = $oUser->id;
+	$oSeries->date = date('y-m-d');
+	$oSeries->save();
+	
+	$pdf = $request->{"input-data-file"};
+	// Save file.  
+        $destinationPath = "data_files/";
+	$filename = $oSeries->id."_".$pdf->getClientOriginalName();
+	$pdf->move($destinationPath, $filename);
+
+	$oSeries->data_file = $filename;
 	$oSeries->Save();
 
 	return response()->json(array('result' => 'ok'));

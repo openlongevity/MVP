@@ -8,6 +8,14 @@
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    <link rel='stylesheet' type='text/css' href='{{asset("bootstrap-fileinput/css/fileinput.min.css")}}' />
+    <script type='text/javascript' src='{{asset("bootstrap-fileinput/js/fileinput.js")}}'></script>
+    <script type='text/javascript' src='{{asset("bootstrap-fileinput/js/plugins/sortable.min.js")}}'></script>
+    <script type='text/javascript' src='{{asset("bootstrap-fileinput/js/plugins/purify.min.js")}}'></script>
+    <script type='text/javascript' src='{{asset("bootstrap-fileinput/themes/fa/theme.js")}}'></script>
+    <script type='text/javascript' src='{{asset("bootstrap-fileinput/js/locales/ru.js")}}'></script>
+    <script src="{{ asset('js/notify.js') }}"></script>
+
     <script type="text/javascript">
 	var olManager = new ol.manager();
 	jQuery(function($) {
@@ -21,6 +29,40 @@
 		    e.preventDefault();
 		    return false;
 		});
+		$(document).on("click", "#add_pdf_series", function(e) {
+			$("#add-file-modal").modal();
+                        $("#input-data-file").fileinput({
+                            overwriteInitial: false,
+                            initialCaption: "Файл анализов из лаборатории",
+			    allowedFileExtensions: ['pdf'],
+			    language: 'ru',
+                            uploadUrl: '/panel/markers/add/file',
+			    ajaxSettings: { headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }},
+			    uploadExtraData: function () {
+				return {panel_id: {{$oPanel->id}}}
+			    },
+																      
+
+                        });
+			$('#input-data-file').on('fileuploaded', function(event, data, previewId, index) {
+			    $("#add-file-modal").modal('toggle');
+			    $.notify("Данные отправлены успешно!", "success");
+			});
+
+		    e.preventDefault();
+		    return false;
+		});
+
+
+		$('#add-file-modal').on('hidden.bs.modal', function (e) {
+		    $('#input-interpretation-file').fileinput('clear');
+		    $("#input-interpretation-file").fileinput('refresh');
+		    $('#input-interpretation-file').fileinput('clearStack');
+		    $('#input-interpretation-file').fileinput('destroy');
+		});
+		
+                    
+
 	    });
 	});
 
@@ -64,6 +106,23 @@
                 <button type="button" class="btn btn-md btn-ol-cancel" data-dismiss="modal" aria-label="Close">Закрыть</button>
 	    </div>
 	    <input type="hidden" value="{{$oPanel->id}}" name="id" />
+	    </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal for add markers button. -->
+<div id="add-file-modal" class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <h4 class="modal-title">Добавление файла данных</h4>
+	</div>
+	<div class="modal-body">
+	    <form id="add_file_form">
+		<input id="input-data-file" name="input-data-file" type="file" class="file-loading" data-preview-file-type="pdf">
 	    </form>
         </div>
     </div>
