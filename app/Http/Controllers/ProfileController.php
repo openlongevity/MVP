@@ -71,5 +71,25 @@ class ProfileController extends Controller
 	$oUser->Save();
 	return response()->json(array('result' => 'ok'));
     }
+    
+    
+    /**
+     * Show the user profile for admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profileAdmin(Request $request)
+    {
+	$oAuthUser = Auth::user();
+	$oUser = User::where('id', $request->id)->first();
+	if (!$oUser) {
+	    return view('errors/notaccess', ['oUser' => $oAuthUser, 'active' => 'profile_link']);
+	}
+	return view('admin/profile', [
+		'oUser' => $oAuthUser, 
+		'oProfileUser' => $oUser, 
+		'active' => 'profile_link']);
+    }
+    
 }
 

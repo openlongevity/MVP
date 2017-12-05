@@ -79,6 +79,9 @@ Route::group([
             Route::post('admin/series/files/interpretation/add/{id}', [
                 'uses' => 'PanelController@addInterpretationFile'
             ]);
+            Route::get('admin/users/profile/{id}', [
+                'uses' => 'ProfileController@profileAdmin'
+            ]);
         }
 );
 

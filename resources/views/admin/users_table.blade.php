@@ -13,7 +13,9 @@
     <tbody>
 	@foreach($aUsers as $user)
 	<tr>
-	    <td><img src="{{$user->getAvatarLink()}}" class="img-circle" width="40" height="40" /> {{$user->name}}</td>
+	    <td><a href="/admin/users/profile/{{$user->id}}"><img src="{{$user->getAvatarLink()}}" class="img-circle" width="40" height="40" /> 
+		{{$user->name}}</a>
+	    </td>
 	    <td>{{$user->email}}</td>
 	    <td>{{$user->getMaritalStatus()}}</td>
 	    <td>{{$user->getAges()}}</td>
