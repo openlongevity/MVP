@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Log;
 use Auth;
+use Illuminate\Http\Response;
 
 class CheckAdmin
 {
@@ -22,6 +23,7 @@ class CheckAdmin
 	    return $next($request);
 	}
 
-	return redirect('/notaccess');
+	return new Response(view('errors/notaccess', ['oUser' => $oUser, 'active' => 'profile_link']));
+
     }
 }
