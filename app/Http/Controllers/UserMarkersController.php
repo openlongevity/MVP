@@ -53,9 +53,10 @@ class UserMarkersController extends Controller
     public function createRowWithMarker(Request $request)
     {
 	$aMarkers = Marker::get();
+	$oMarker = Marker::where('id', $request->marker_id)->first();
 	$view = View::make('user_markers_table_row', [
 		'index' => $request->number,
-		'marker_id' => $request->marker_id,
+		'oMarker' => $oMarker,
 		'allMarkers' => $aMarkers,
 	]);
 	$sHtml = $view->render();

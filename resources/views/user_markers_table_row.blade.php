@@ -3,7 +3,7 @@
         <select name="marker_id_{{$index}}" class="marker_id js-example-basic-single markers_select" id="marker_id_{{$index}}">
     	<option value="0">Выберите маркер</option>
         @foreach($allMarkers as $marker) 
-    	<option value="{{$marker->id}}" @if ($marker_id == $marker->id) selected @endif>{{$marker->name}}</option>
+    	<option value="{{$marker->id}}" @if ($oMarker->id == $marker->id) selected @endif>{{$marker->name}}</option>
         @endforeach
         </select>
     </td>
@@ -11,7 +11,7 @@
         <input name="value_{{$index}}" size="7" required="required" type="number" class="number-input" step="any"></input>
     </td>
     <td>
-        <input name="lab_units_{{$index}}" size="7"></input>
+        <input name="lab_units_{{$index}}" size="7" value="{{$oMarker->units}}"></input>
     </td>
     <td>
         <input name="ref_lab_value_min_{{$index}}" size="7" type="number" class="number-input" step="any"></input>
