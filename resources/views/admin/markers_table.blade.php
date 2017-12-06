@@ -4,6 +4,7 @@
 	    <th>Название</th>
 	    <th>Синонимы</th>
 	    <th>Ед. измерения</th>
+	    <th class="no-sort"></th>
 	</tr>
     </thead>
     <tbody>
@@ -12,6 +13,10 @@
 	    <td>{{$marker->name}}</td>
 	    <td>{{$marker->names}}</td>
 	    <td>{{$marker->units}}</td>
+	    <td>
+		<a href="/admin/marker/edit/{{$marker->id}}" class="edit_marker" data-marker-id="{{$marker->id}}"><span class="glyphicon glyphicon-edit"></span></a>
+		<a href="#" class="remove_marker" data-marker-id="{{$marker->id}}"><span class="glyphicon glyphicon-remove"></span></a>
+	    </td>
 	</tr>
 	@endforeach
     </tbody>

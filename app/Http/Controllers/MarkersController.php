@@ -44,6 +44,49 @@ class MarkersController extends Controller
 		'active' => 'admin_markers_link'
 	]);
     }
+    
+    /**
+     * Show page for editing marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editMarker(Request $request)
+    {
+	$oUser = Auth::user();
+	$marker = Marker::where('id', $request->id)->first();
+	if ($marker) {
+	    return view('admin/marker_edit', [
+		'oUser' => $oUser, 
+		'marker' => $marker, 
+		'active' => 'admin_markers_link'
+	    ]);
+	}
+	
+	return view('errors/notaccess', ['oUser' => $oUser, 'active' => 'admin_markers_link']);
+    }
+    
+    
+    /**
+     * Save info about marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveMarker(Request $request)
+    {
+	$oMarker = Marker::where('id', $request->id)->first();
+	$aFields = array('name', 'names', 'names_en', 'desc', 'desc_short', 'method', 'units', 'units_full', 'preparing', 'biomaterial');
+
+	if ($oMarker) {
+	    foreach($aFields as $sField) {
+		$oMarker->{$sField} = $request->{$sField};
+	    }
+
+	    $oMarker->Save();
+	}
+
+	return response()->json(array('result' => 'ok'));
+    }
+    
 }    
 
 

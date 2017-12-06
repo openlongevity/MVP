@@ -186,4 +186,27 @@ ol.manager = function () {
 	    });
             return false;
         };
+
+        /**
+         * Save marker info.
+         */
+        this.saveMarkerInfo = function() {
+            var self = this;
+	    $("#save_marker_btn").button('loading');
+            $.ajax({
+		url: '/admin/marker/save', 
+		type: 'post',
+		data: $('#marker-form').serialize(),
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    $("#save_marker_btn").button('reset');
+		    $.notify("Данные сохранены успешно!", "success");
+		},
+	    });
+            return false;
+        };
+
+ 
 };

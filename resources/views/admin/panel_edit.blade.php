@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-xs-12">
 			    <textarea  autocomplete="off" type="text" name="description" 
-				value="{{$oUser->profile_about}}" class="summernote">{{$oPanel->description}}</textarea>
+				class="summernote">{{$oPanel->description}}</textarea>
                     </div>
                 </div>
 		<div>

@@ -11,6 +11,10 @@
 
 		$('#markers').DataTable({
                     "iDisplayLength": 100,
+		    columnDefs: [
+                        { targets: 'no-sort', orderable: false }
+                    ],
+
                  });
  
 	    });

@@ -82,6 +82,12 @@ Route::group([
             Route::get('admin/users/profile/{id}', [
                 'uses' => 'ProfileController@profileAdmin'
             ]);
+            Route::get('admin/marker/edit/{id}', [
+                'uses' => 'MarkersController@editMarker'
+            ]);
+            Route::post('admin/marker/save', [
+                'uses' => 'MarkersController@saveMarker'
+            ]);
         }
 );
 
