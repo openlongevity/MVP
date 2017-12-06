@@ -95,7 +95,7 @@
 			    <input type="text" size="5" name="marker_{{$marker->id}}" id="marker_{{$marker->id}}">
 			</td>
 			<td>
-			    {{$marker->units}}
+			    <span title="{{$marker->units_full}}">{{$marker->units}}</a>
 			</td>
 		    </tr>
 		    @endforeach
@@ -182,7 +182,7 @@
 			@foreach($aSeries as $oSeries)
 			    <td>
 				@if (isset($aRes[$oSeries->id]['markers'][$oMarker->id]))
-				    {{$aRes[$oSeries->id]['markers'][$oMarker->id]->value}} {{$oMarker->units}}
+				    {{$aRes[$oSeries->id]['markers'][$oMarker->id]->value}} <span title="{{$oMarker->units_full}}">{{$oMarker->units}}</span>
 				@endif
 			    </td>
 			@endforeach
