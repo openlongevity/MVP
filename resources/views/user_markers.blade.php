@@ -89,7 +89,7 @@
 		    return false;
 		});
 		$(document).on("click", "#delete-marker-forever", function(e) {
-		    olManager.deleteMarker();
+		    olManager.deleteUserMarker();
 		    return false;
 		});
 	    });

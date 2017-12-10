@@ -125,7 +125,9 @@ class User extends Authenticatable
      * Returns list of user markers.
      */ 
     public function getMarkers() {
-	return UserMarker::where('user_id', $this->id)->get();
+	return UserMarker::where('user_id', $this->id)
+		->where('deleted', 0)
+		->get();
     }
 
 }

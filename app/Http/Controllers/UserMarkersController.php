@@ -31,7 +31,9 @@ class UserMarkersController extends Controller
     public function userMarkers()
     {
 	$oUser = Auth::user();
-	$aUserMarkers = UserMarker::where('user_id', $oUser->id)->orderBy('date', 'desc')->get();
+	$aUserMarkers = UserMarker::where('user_id', $oUser->id)
+		->where('deleted', 0)
+		->orderBy('date', 'desc')->get();
 	$aMarkers = Marker::get()->keyBy('id');
 	$aNewUserMarkers = array();
 	foreach($aUserMarkers as $oMarker) {
@@ -133,7 +135,8 @@ class UserMarkersController extends Controller
     {
 	$oMarker = UserMarker::where('id', $request->id)->first();
 	if ($oMarker) {
-	    $oMarker->Delete();
+	    $oMarker->deleted = 1;
+	    $oMarker->Save();
 	}
 	return response()->json(array('result' => 'ok'));
     }

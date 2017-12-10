@@ -6,6 +6,8 @@
     <script type='text/javascript' src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
 
     <script type="text/javascript">
+	var olManager = new ol.manager();
+	var markerIdForDelete = undefined;
 	jQuery(function($) {
 	    $(document).ready( function () {
 
@@ -16,7 +18,19 @@
                     ],
 
                  });
- 
+		
+		$(document).on("click", ".remove_marker", function(e) {
+		    // show confirm delete modal
+		    $('#confirm-delete').modal();
+		    markerIdForDelete = $(this).attr('data-marker-id');
+		    e.preventDefault();
+		    return false;
+		});
+		$(document).on("click", "#delete-marker-forever", function(e) {
+		    olManager.deleteMarker(markerIdForDelete);
+		    e.preventDefault();
+		    return false;
+		});
 	    });
 	});
 
@@ -24,6 +38,21 @@
 @endsection
 
 @section('content')
+
+<!-- Modal for deleting marker. -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Вы действительно хотите удалить данный маркер? Внимание! Все анализы пользователей добавленные для этого маркера будут также удалены!
+            </div>
+	    <div class="modal-footer">
+                <button type="button" class="btn  btn-md btn-ol-cancel" data-dismiss="modal">Отмена</button>
+                <a class="btn  btn-md btn-ol-delete" id="delete-marker-forever">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="profile-content">
     <div class="mymarkers-row">

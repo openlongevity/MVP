@@ -126,9 +126,9 @@ ol.manager = function () {
         };
 
         /**
-         * Save user profile to server.
+         * Deletes user marker.
          */
-        this.deleteMarker = function() {
+        this.deleteUserMarker = function() {
             var self = this;
             $.ajax({
 		url: '/markers/delete', 
@@ -209,4 +209,23 @@ ol.manager = function () {
         };
 
  
+        /**
+         * Deletes marker.
+         */
+        this.deleteMarker = function(marker_id) {
+            var self = this;
+            $.ajax({
+		url: '/admin/marker/delete', 
+		type: 'post',
+		data: {id: marker_id},
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    location.href = '/admin/markers';	    
+		},
+	    });
+            return false;
+        };
+
 };

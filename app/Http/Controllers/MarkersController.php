@@ -14,6 +14,7 @@ use App\PanelUserSeriesMarker;
 use Auth;
 use Log;
 use Illuminate\Support\Facades\View;
+use DB;
 
 class MarkersController extends Controller
 {
@@ -87,6 +88,24 @@ class MarkersController extends Controller
 	return response()->json(array('result' => 'ok'));
     }
     
+    /**
+     * Deletes marker by id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteMarker(Request $request)
+    {
+	// Delete marker forever.
+	$oMarker = Marker::where('id', $request->id)->first();
+	if ($oMarker) {
+	    $oMarker->Delete();
+	}
+	// Update user markers.
+	DB::table('user_markers')
+		->where('marker_id', $request->id)
+		->update(['deleted' => 1]);
+	return response()->json(array('result' => 'ok'));
+    }
 }    
 
 
