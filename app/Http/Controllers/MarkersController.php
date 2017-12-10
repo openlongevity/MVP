@@ -106,6 +106,41 @@ class MarkersController extends Controller
 		->update(['deleted' => 1]);
 	return response()->json(array('result' => 'ok'));
     }
+    
+    
+    /**
+     * Show page for adding marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addMarker(Request $request)
+    {
+	$oUser = Auth::user();
+	return view('admin/marker_add', [
+		'oUser' => $oUser, 
+		'active' => 'admin_markers_link'
+	]);
+    }
+    
+    /**
+     * Save info about new marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveNewMarker(Request $request)
+    {
+	$oMarker = new Marker;
+	$aFields = array('name', 'names', 'names_en', 'desc', 'desc_short', 'method', 'units', 'units_full', 'preparing', 'biomaterial');
+
+	foreach($aFields as $sField) {
+	    $oMarker->{$sField} = $request->{$sField};
+	}
+
+	$oMarker->Save();
+
+	return response()->json(array('result' => 'ok', 'marker_id' => $oMarker->id));
+    }
+    
 }    
 
 

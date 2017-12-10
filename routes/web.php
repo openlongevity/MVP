@@ -91,6 +91,12 @@ Route::group([
             Route::post('admin/marker/delete', [
                 'uses' => 'MarkersController@deleteMarker'
             ]);
+            Route::get('admin/marker/add', [
+                'uses' => 'MarkersController@addMarker'
+            ]);
+            Route::post('admin/marker/add/save', [
+                'uses' => 'MarkersController@saveNewMarker'
+            ]);
         }
 );
 

@@ -228,4 +228,30 @@ ol.manager = function () {
             return false;
         };
 
+        /**
+         * Add new marker.
+         */
+        this.addMarker = function() {
+            var self = this;
+	    $("#save_marker_btn").button('loading');
+            $.ajax({
+		url: '/admin/marker/add/save', 
+		type: 'post',
+		data: $('#marker-form').serialize(),
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+
+		    $("#save_marker_btn").button('reset');
+		    $.notify("Данные сохранены успешно!", "success");
+		    setTimeout(function() {
+			location.href = '/admin/marker/edit/' + result.marker_id;
+		    }, 1000);
+		},
+	    });
+            return false;
+        };
+
+ 
 };

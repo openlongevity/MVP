@@ -58,6 +58,10 @@
     <div class="mymarkers-row">
 	<div class="my-markers-header">
 	    Маркеры
+	    <a class="btn btn-xs btn-ol-edit" href="/admin/marker/add">Добавить новый маркер</a>
+	</div>
+	<div>
+	    &nbsp;
 	</div>
 	    @include('admin/markers_table', [])
     </div>
