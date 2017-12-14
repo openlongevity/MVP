@@ -13,6 +13,7 @@
 
     <script type="text/javascript">
 	var olManager = new ol.manager();
+	var markerIdForDelete = undefined;
 	jQuery(function($) {
 	    $(document).ready( function () {
 		$('.summernote').summernote({
@@ -52,6 +53,18 @@
 		});
 
 		
+		$(document).on("click", ".remove_marker", function(e) {
+		    // show confirm delete modal
+		    $('#confirm-delete').modal();
+		    markerIdForDelete = $(this).attr('data-marker-id');
+		    e.preventDefault();
+		    return false;
+		});
+		$(document).on("click", "#delete-marker-from-panel", function(e) {
+		    olManager.deleteMarkerFromPanel(markerIdForDelete);
+		    e.preventDefault();
+		    return false;
+		});
 	    });
 	});
 

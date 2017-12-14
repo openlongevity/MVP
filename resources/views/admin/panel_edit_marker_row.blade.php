@@ -1,4 +1,4 @@
-<tr>
+<tr id="row_{{$oMarker->id}}">
     <td>{{$oMarker->name}}</td>
     <td>
         <a href="#" class="edit_marker_reference" data-marker-id="{{$oMarker->id}}"><span class="glyphicon glyphicon-edit"></span></a><br />

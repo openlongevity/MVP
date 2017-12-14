@@ -285,4 +285,31 @@ ol.manager = function () {
         };
 
  
+        /**
+         * Deletes marker.
+         */
+        this.deleteMarkerFromPanel = function(marker_id) {
+            var self = this;
+            $.ajax({
+		url: '/admin/marker/delete/frompanel', 
+		type: 'post',
+		data: {marker_id: marker_id, panel_id: $('#id').val()},
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    if (result.error == 1) {
+			$.notify("Неизвестный маркер!", "error");
+		    } else {
+			$.notify("Маркер удален успешно!", "success");
+			// Remove row from table.
+			$('#row_' + marker_id).remove();
+		    }
+		    // Hide form.
+		    $('#confirm-delete').modal('toggle');
+		},
+	    });
+            return false;
+        };
+
 };

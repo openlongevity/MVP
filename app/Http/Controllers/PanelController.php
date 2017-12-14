@@ -292,6 +292,14 @@ class PanelController extends Controller
      */
     public function deleteMarkerToPanel(Request $request)
     {
+	$oPanelMarker = PanelMarker::where('marker_id', $request->marker_id)
+	    ->where('panel_id', $request->panel_id)
+	    ->first();
+	if (!$oPanelMarker) {
+	    return response()->json(array('error' => 1));
+	}
+	$oPanelMarker->Delete();
+	
 	return response()->json(array('result' => 'ok'));
     }
 }

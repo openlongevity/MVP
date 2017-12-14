@@ -100,6 +100,9 @@ Route::group([
             Route::post('admin/marker/add/topanel', [
                 'uses' => 'PanelController@addMarkerToPanel'
             ]);
+            Route::post('admin/marker/delete/frompanel', [
+                'uses' => 'PanelController@deleteMarkerToPanel'
+            ]);
         }
 );
 
