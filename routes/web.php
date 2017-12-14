@@ -97,6 +97,9 @@ Route::group([
             Route::post('admin/marker/add/save', [
                 'uses' => 'MarkersController@saveNewMarker'
             ]);
+            Route::post('admin/marker/add/topanel', [
+                'uses' => 'PanelController@addMarkerToPanel'
+            ]);
         }
 );
 

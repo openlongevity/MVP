@@ -67,9 +67,11 @@ class PanelController extends Controller
     {
 	$oUser = Auth::user();
 	$oPanel = Panel::where('id', $request->id)->first();
+	$aMarkers = Marker::get()->keyBy('id');
 	return view('admin/panel_edit', [
 		'oUser' => $oUser, 
 		'oPanel' => $oPanel, 
+		'allMarkers' => $aMarkers,
 		'active' => 'panel_ol11_link']);
     }
     
@@ -248,5 +250,49 @@ class PanelController extends Controller
 	return response()->json(array('result' => 'ok'));
     }
     
+    /**
+     * Adds marker to panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addMarkerToPanel(Request $request)
+    {
+	$oPanelMarker = PanelMarker::where('marker_id', $request->marker_id)->first();
+	if ($oPanelMarker) {
+	    return response()->json(array('error' => 2));
+	}
+	
+	if (!isset($request->marker_id)) {
+	    return response()->json(array('error' => 1));
+	}
+
+	$oMarker = Marker::where('id', $request->marker_id)->first();
+	if (!$oMarker) {
+	    return response()->json(array('error' => 1));
+	}
+
+	$oPanelMarker = new PanelMarker();
+	$oPanelMarker->panel_id = $request->panel_id;
+	$oPanelMarker->marker_id = $request->marker_id;
+	$oPanelMarker->Save();
+	
+	$view = View::make('admin/panel_edit_marker_row', [
+		'oMarker' => $oMarker,
+	]);
+	$sHtml = $view->render();
+
+	return response()->json(array('result' => 'ok', 'html' => $sHtml));
+    }
+    
+    
+    /**
+     * Deletes marker from panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteMarkerToPanel(Request $request)
+    {
+	return response()->json(array('result' => 'ok'));
+    }
 }
 

@@ -254,4 +254,35 @@ ol.manager = function () {
         };
 
  
+        /**
+         * Add new marker to panel.
+         */
+        this.addMarkerToPanel = function() {
+            var self = this;
+	    $("#add-marker-to-panel").button('loading');
+            $.ajax({
+		url: '/admin/marker/add/topanel', 
+		type: 'post',
+		data: {marker_id: $('#marker_chooser').val(), panel_id: $('#id').val()},
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    if (result.error == 1) {
+			$.notify("Неизвестный маркер!", "error");
+		    } if (result.error == 2) {
+			$.notify("Маркер уже был добавлен!", "warn");
+		    } else {
+			$.notify("Данные сохранены успешно!", "success");
+			// Add row to table
+			$('#panel_markers tr:last').before(result.html);
+		    }
+		    $("#add-marker-to-panel").button('reset');
+		    $('#confirm-add').modal('toggle');
+		},
+	    });
+            return false;
+        };
+
+ 
 };

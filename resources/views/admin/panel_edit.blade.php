@@ -36,6 +36,22 @@
 		    return false;
 		});
 
+		
+		$('#marker_chooser').select2({
+		});
+
+		$(document).on("change", "#marker_chooser", function(e) {
+		    $('#marker_name').html($("#marker_chooser option:selected").text());
+		    $('#confirm-add').modal();
+		});
+		
+		$(document).on("click", "#add-marker-to-panel", function(e) {
+		    olManager.addMarkerToPanel();
+		    e.preventDefault();
+		    return false;
+		});
+
+		
 	    });
 	});
 
@@ -43,6 +59,36 @@
 @endsection
 
 @section('content')
+
+<!-- Modal for deleting marker from panel. -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Вы действительно хотите удалить данный маркер из панели?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-md btn-ol-cancel" data-dismiss="modal">Отмена</button>
+                <a class="btn  btn-md btn-ol-delete" id="delete-marker-from-panel">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for adding marker to panel. -->
+<div class="modal fade" id="confirm-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Добавить маркер "<span id='marker_name'></span>" в панель?
+            </div>
+            <div class="modal-footer">
+                <button class="btn  btn-md btn-ol-login" id="add-marker-to-panel"  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Добавление...">Да</button>
+                <button type="button" class="btn  btn-md btn-ol-cancel" data-dismiss="modal">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="profile-content">
     <div class="mymarkers-row">
@@ -94,6 +140,44 @@
 		</div>
 		<input type="hidden" name="id" value="{{$oPanel->id}}" id="id"/>
 	    </form>
+	</div>
+	<div>
+	    &nbsp;
+	</div>
+	<div>
+	    &nbsp;
+	</div>
+	<div class="my-markers-header">
+	    Список маркеров панели
+	</div>
+	<div>
+	    <table class="table" id="panel_markers">
+		<thead>
+		    <tr>
+			<th>Название</th>
+			<th>Референсы панели</th>
+			<th></th>
+		    </tr>
+		</thead>
+		<tbody>
+		@foreach($oPanel->getMarkers() as $oMarker)
+		    @include('admin/panel_edit_marker_row', [$oMarker])
+		@endforeach
+		    <tr>
+			<td>
+			    <select name="new_marker_id" class="marker_id js-example-basic-single markers_select_for_panel" id="marker_chooser">
+				<option value="0">Выберите маркер для добавления в панель</option>
+				@foreach($allMarkers as $marker) 
+				    <option value="{{$marker->id}}">{{$marker->name}}</option>
+				@endforeach
+			    </select>
+			</td>
+			<td></td>
+			<td></td>
+		    </tr>
+		</tbody>
+		
+	    </table>
 	</div>
     </div>
 </div>
