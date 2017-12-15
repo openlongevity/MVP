@@ -101,7 +101,16 @@ Route::group([
                 'uses' => 'PanelController@addMarkerToPanel'
             ]);
             Route::post('admin/marker/delete/frompanel', [
-                'uses' => 'PanelController@deleteMarkerToPanel'
+                'uses' => 'PanelController@deleteMarkerFromPanel'
+            ]);
+            Route::post('admin/marker/references/get', [
+                'uses' => 'PanelController@getTableReference'
+            ]);
+            Route::post('admin/marker/references/row', [
+                'uses' => 'PanelController@createRowWithReference'
+            ]);
+            Route::post('admin/marker/references/update', [
+                'uses' => 'PanelController@updateReferences'
             ]);
         }
 );

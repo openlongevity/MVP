@@ -11,8 +11,10 @@ use App\UserMarker;
 use App\Marker;
 use App\PanelUserSeries;
 use App\PanelUserSeriesMarker;
+use App\PanelMarkerReference;
 use Auth;
 use Log;
+use DB;
 use Illuminate\Support\Facades\View;
 
 class PanelController extends Controller
@@ -290,7 +292,7 @@ class PanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function deleteMarkerToPanel(Request $request)
+    public function deleteMarkerFromPanel(Request $request)
     {
 	$oPanelMarker = PanelMarker::where('marker_id', $request->marker_id)
 	    ->where('panel_id', $request->panel_id)
@@ -300,6 +302,83 @@ class PanelController extends Controller
 	}
 	$oPanelMarker->Delete();
 	
+	return response()->json(array('result' => 'ok'));
+    }
+    
+    /**
+     * Returns html with table with references.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getTableReference(Request $request)
+    {
+	$aMarkerRefs = PanelMarkerReference::where('panel_id', $request->panel_id)
+		->where('marker_id', $request->marker_id)
+		->get();
+	$view = View::make('admin/references_table', [
+		'panel_id' => $request->panel_id,
+		'aMarkerRefs' => $aMarkerRefs,
+	]);
+	$sHtml = $view->render();
+
+	return response()->json(array('result' => 'ok', 'html' => $sHtml));
+    }
+    
+    
+    /**
+     * Returns code with row with empty reference.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createRowWithReference(Request $request)
+    {
+	$view = View::make('admin/reference_row', [
+		'index' => $request->index,
+	]);
+	$sHtml = $view->render();
+
+	return response()->json(array('html' => $sHtml));
+    }
+    
+    
+    /**
+     * Save new references for panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateReferences(Request $request)
+    {
+	// Delete all previous reference
+	$qDelete = DB::table('panel_marker_reference')->where('marker_id', $request->marker_id);
+	if (isset($request->{"panel_id"})) {
+	    $qDelete = $qDelete->where('panel_id', $request->panel_id);
+	}
+
+	$qDelete->delete();
+
+	    
+	// Add new reference.
+	$aFields = array('sex', 'ref_min', 'ref_max', 'panel_id', 'marker_id');
+	for ($index = 0; $index <= $request->index; $index++) {
+	    if (isset($request->{"sex_".$index})) {
+		$oPanelReference = new PanelMarkerReference();
+		foreach($aFields as $sField) {
+		    if (isset($request->{$sField."_".$index})) {
+			$oPanelReference->{$sField} = $request->{$sField."_".$index};
+		    }
+		}
+		if (isset($request->{"age_".$index}) && $request->{"age_".$index} == 1) {
+		    $oPanelReference->{"age_min"} = $request->{"age_min_".$index};
+		    $oPanelReference->{"age_max"} = $request->{"age_max_".$index};
+		}
+		if (isset($request->{"panel_id"})) {
+		    $oPanelReference->{"panel_id"} = $request->{"panel_id"};
+		}
+		$oPanelReference->{"marker_id"} = $request->{"marker_id"};
+
+		$oPanelReference->Save();
+	    }
+	}
 	return response()->json(array('result' => 'ok'));
     }
 }

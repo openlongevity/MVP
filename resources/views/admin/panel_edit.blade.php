@@ -14,6 +14,7 @@
     <script type="text/javascript">
 	var olManager = new ol.manager();
 	var markerIdForDelete = undefined;
+	var markerIdForRef = undefined;
 	jQuery(function($) {
 	    $(document).ready( function () {
 		$('.summernote').summernote({
@@ -65,6 +66,87 @@
 		    e.preventDefault();
 		    return false;
 		});
+		
+		$(document).on("click", ".edit_marker_reference", function(e) {
+		    // Show modal.
+		    $('#edit-references').modal();
+		    
+		    // Add name of marker to modal
+		    var id = $(this).attr('data-marker-id');
+		    markerIdForRef = id;
+		    $('#marker_name_ref').html($('#marker_name_'+id).text());
+
+		    // Add units to modal.
+		    $('#marker_units_ref').html($(this).attr('data-marker-units'));
+
+		    // Get table from server.
+		    olManager.getTableReference(id);
+		    
+		    e.preventDefault();
+		    return false;
+		});
+		
+		$(document).on("click", ".add_ref_marker", function(e) {
+		    // Find "free" index.
+		    var index = 0;	
+		    while(1) {
+			if (!$("#ref_row_" + index).length) {
+			    break;
+			}
+
+			index++;
+			if (index > 100) {
+			    break;
+			}
+		    }
+		    console.log('index:' + index);
+
+		    // Add row with empty data about index.
+		    olManager.createRowReference(index);
+			
+		    e.preventDefault();
+		    return false;
+		});
+		
+		$(document).on("change", ".select-age", function(e) {
+		    var index = $(this).attr('data-index');
+		    if ($(this).val() == 1) {
+			$('#select_age_div_' + index).show();
+		    } else {
+			$('#select_age_div_' + index).hide();
+		    }
+		});
+		
+		
+		$(document).on("click", "#add-marker-references", function(e) {
+		    var cRefs = $('#ref_marker tbody').find('tr').length;
+		    var index = 0, findIndex = 0;
+		    while(1) {
+			if ($("#ref_row_" + index).length) {
+			    findIndex++;	
+			}
+
+			index++;
+			if (index > 100) {
+			    break;
+			}
+			if (findIndex == cRefs) {
+			    break;
+			}
+		    }
+		    
+		    olManager.updateReferences(index, markerIdForRef);
+			
+		    e.preventDefault();
+		    return false;
+		});
+		$(document).on("click", ".remove_ref_marker", function(e) {
+		    var id = $(this).attr('data-marker-index');
+		    $('#ref_row_' + id).remove();
+		    e.preventDefault();
+		    return false;
+		});
+
 	    });
 	});
 
@@ -97,6 +179,29 @@
             </div>
             <div class="modal-footer">
                 <button class="btn  btn-md btn-ol-login" id="add-marker-to-panel"  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Добавление...">Да</button>
+                <button type="button" class="btn  btn-md btn-ol-cancel" data-dismiss="modal">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for editing marker references. -->
+<div class="modal fade" id="edit-references" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+		Редактирование референсных значений для маркера "<span id="marker_name_ref"></span>".
+	    </div>
+	    <div class="modal-body">
+		<div>
+		    Единицы измерения:  <span id="marker_units_ref"></span>
+		</div>
+		<div id="marker_content_ref">
+		    <i class='fa fa-spinner fa-spin '></i> Подгрузка ...
+		</div>
+	    </div>
+            <div class="modal-footer">
+                <button class="btn  btn-md btn-ol-login" id="add-marker-references"  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Добавление...">Сохранить</button>
                 <button type="button" class="btn  btn-md btn-ol-cancel" data-dismiss="modal">Отмена</button>
             </div>
         </div>

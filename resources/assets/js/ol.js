@@ -286,7 +286,7 @@ ol.manager = function () {
 
  
         /**
-         * Deletes marker.
+         * Deletes marker from panel.
          */
         this.deleteMarkerFromPanel = function(marker_id) {
             var self = this;
@@ -307,6 +307,82 @@ ol.manager = function () {
 		    }
 		    // Hide form.
 		    $('#confirm-delete').modal('toggle');
+		},
+	    });
+            return false;
+        };
+
+
+        /**
+         * Gets table with references.
+         */
+        this.getTableReference = function(marker_id) {
+            var self = this;
+            $.ajax({
+		url: '/admin/marker/references/get', 
+		type: 'post',
+		data: {marker_id: marker_id, panel_id: $('#id').val()},
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    if (result.error == 1) {
+			$.notify("Неизвестный маркер!", "error");
+		    } else {
+			$('#marker_content_ref').html(result.html);
+		    }
+		},
+	    });
+            return false;
+        };
+
+
+
+        /**
+         * Gets row with empty references.
+         */
+        this.createRowReference = function(index) {
+            var self = this;
+            $.ajax({
+		url: '/admin/marker/references/row', 
+		type: 'post',
+		data: {index: index},
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    $('#ref_marker tbody').append(result.html);
+		},
+	    });
+            return false;
+        };
+
+        /**
+         * Gets row with empty references.
+         */
+        this.updateReferences = function(index, marker_id) {
+            var self = this;
+	    var data = $('#ref_marker_form').serializeArray();
+	    console.log('index2:' + index);
+	    data.push({name: "index", value: index});
+	    data.push({name: "panel_id", value: $('#id').val()});
+	    data.push({name: "marker_id", value: marker_id});
+
+	    console.log(data);
+            $.ajax({
+		url: '/admin/marker/references/update', 
+		type: 'post',
+		data: data,
+		headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},	
+		success: function(result) {
+		    if (result.error > 0) {
+			$.notify("Неизвестная ошибка!", "error");
+		    } else {
+			$.notify("Данные сохранены успешно!", "success");
+			$('#edit-references').modal('toggle');
+		    }
 		},
 	    });
             return false;
