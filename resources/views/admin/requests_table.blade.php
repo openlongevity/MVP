@@ -15,9 +15,9 @@
 	    <td><a href="/admin/users/profile/{{$aUsers[$series->user_id]->id}}">{{$aUsers[$series->user_id]->getName()}}</a></td>
 	    <td>
 		@if ($series->data_file)
-		    <a href="/files/data/{{$series->id}}">Файл с данными</a>
+		    <a href="/admin/request/{{$series->id}}">Файл с данными</a>
 		@else
-		    Добавлены вручную
+		    <a href="/admin/request/{{$series->id}}">Добавлены вручную</a>
 		@endif
 	    </td>
 	    <td>

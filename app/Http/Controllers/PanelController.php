@@ -381,5 +381,36 @@ class PanelController extends Controller
 	}
 	return response()->json(array('result' => 'ok'));
     }
+    
+    
+    /**
+     * Show page with request of user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function request(Request $request)
+    {
+	$oUser = Auth::user();
+	$oSeries = PanelUserSeries::where('id', $request->id)->first();
+	$oPanel = Panel::where('id', $oSeries->panel_id)->first();
+	$oUserRequest = User::where('id', $oSeries->user_id)->first();
+	$aSeriesMarkers = PanelUserSeriesMarker::where('series_id', $oSeries->id)->get()->keyBy('user_marker_id');
+
+	$aUserMarkerIds = array();
+	foreach($aSeriesMarkers as $oSeriesMarker) {
+	    $aUserMarkerIds[] = $oSeriesMarker->user_marker_id;
+	}
+	$aUserMarkers = UserMarker::whereIn('id', $aUserMarkerIds)->get()->keyBy('marker_id');
+	return view('admin/request', [
+		'oUser' => $oUser, 
+		'oSeries' => $oSeries, 
+		'oPanel' => $oPanel, 
+		'oUserRequest' => $oUserRequest, 
+		'aSeriesMarkers' => $aSeriesMarkers, 
+		'aUserMarkers' => $aUserMarkers, 
+		'active' => 'admin_requests_link'
+	]);
+    }
+    
 }
 

@@ -435,6 +435,11 @@ input.number-input {
     font-weight: 300;
 }
 
+.my-header-2 {
+    font-size: 120%;
+    font-weight: 300;
+}
+
 .marker-fail {
     background-color: #ffcdce;
 }
@@ -493,4 +498,14 @@ input.number-input {
 
 #admin_panels_link {
     margin-top: 25px;
+}
+
+.data-file {
+    width: 100%;
+    height: 600px;
+}
+
+.interpretation-file {
+    width: 100%;
+    height: 600px;
 }

@@ -112,6 +112,9 @@ Route::group([
             Route::post('admin/marker/references/update', [
                 'uses' => 'PanelController@updateReferences'
             ]);
+            Route::get('admin/request/{id}', [
+                'uses' => 'PanelController@request'
+            ]);
         }
 );
 
