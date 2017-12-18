@@ -203,6 +203,19 @@
 		</div>
 
 		<div class="row">
+                    <div class="col-xs-12">
+                            <span class="profile_cell_name">Качественный?</span>
+		    </div>
+		</div>
+                <div class="row">
+                    <div class="col-xs-12">
+			    <input type="checkbox" name="is_quality" @if ($marker->is_quality == 1) checked @endif></input>
+                    </div>
+		</div>
+		<div>
+		    &nbsp;
+		</div>
+		<div class="row">
 		    <div class="col-xs-12">
 			<button class="btn btn-md btn-ol-login" value="Сохранить" id="save_marker_btn"  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Сохранение...">Сохранить изменения</button>
                         <a class="btn btn-md btn-ol-cancel" href="/marker/{{$marker->id}}">Отмена</a>

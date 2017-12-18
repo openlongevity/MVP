@@ -82,6 +82,12 @@ class MarkersController extends Controller
 		$oMarker->{$sField} = $request->{$sField};
 	    }
 
+	    if ($request->is_quality) {
+		$oMarker->is_quality = 1;
+	    } else {
+		$oMarker->is_quality = 0;
+	    }
+
 	    $oMarker->Save();
 	}
 
@@ -134,6 +140,12 @@ class MarkersController extends Controller
 
 	foreach($aFields as $sField) {
 	    $oMarker->{$sField} = $request->{$sField};
+	}
+
+	if ($request->is_quality) {
+	    $oMarker->is_quality = 1;
+	} else {
+	    $oMarker->is_quality = 0;
 	}
 
 	$oMarker->Save();
