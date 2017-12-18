@@ -277,9 +277,12 @@ class PanelController extends Controller
 	$oPanelMarker->panel_id = $request->panel_id;
 	$oPanelMarker->marker_id = $request->marker_id;
 	$oPanelMarker->Save();
+
+	$oPanel = Panel::where('id', $request->panel_id)->first();
 	
 	$view = View::make('admin/panel_edit_marker_row', [
 		'oMarker' => $oMarker,
+		'oPanel' => $oPanel
 	]);
 	$sHtml = $view->render();
 
