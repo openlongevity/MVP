@@ -355,6 +355,8 @@ class PanelController extends Controller
 	$qDelete = DB::table('panel_marker_reference')->where('marker_id', $request->marker_id);
 	if (isset($request->{"panel_id"})) {
 	    $qDelete = $qDelete->where('panel_id', $request->panel_id);
+	} else {
+	    $qDelete = $qDelete->whereNull('panel_id');
 	}
 
 	$qDelete->delete();

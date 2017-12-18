@@ -80,7 +80,7 @@
 		    $('#marker_units_ref').html($(this).attr('data-marker-units'));
 
 		    // Get table from server.
-		    olManager.getTableReference(id);
+		    olManager.getTableReference(id, $('#id').val());
 		    
 		    e.preventDefault();
 		    return false;
@@ -135,7 +135,7 @@
 			}
 		    }
 		    
-		    olManager.updateReferences(index, markerIdForRef);
+		    olManager.updateReferences(index, markerIdForRef, $('#id').val());
 			
 		    e.preventDefault();
 		    return false;

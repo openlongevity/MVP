@@ -316,12 +316,12 @@ ol.manager = function () {
         /**
          * Gets table with references.
          */
-        this.getTableReference = function(marker_id) {
+        this.getTableReference = function(marker_id, panel_id) {
             var self = this;
             $.ajax({
 		url: '/admin/marker/references/get', 
 		type: 'post',
-		data: {marker_id: marker_id, panel_id: $('#id').val()},
+		data: {marker_id: marker_id, panel_id: panel_id},
 		headers: {
 		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},	
@@ -360,12 +360,12 @@ ol.manager = function () {
         /**
          * Gets row with empty references.
          */
-        this.updateReferences = function(index, marker_id) {
+        this.updateReferences = function(index, marker_id, panel_id) {
             var self = this;
 	    var data = $('#ref_marker_form').serializeArray();
 	    console.log('index2:' + index);
 	    data.push({name: "index", value: index});
-	    data.push({name: "panel_id", value: $('#id').val()});
+	    data.push({name: "panel_id", value: panel_id});
 	    data.push({name: "marker_id", value: marker_id});
 
 	    console.log(data);
@@ -382,6 +382,9 @@ ol.manager = function () {
 		    } else {
 			$.notify("Данные сохранены успешно!", "success");
 			$('#edit-references').modal('toggle');
+			setTimeout(function() {
+			    location.reload();
+			}, 500);
 		    }
 		},
 	    });

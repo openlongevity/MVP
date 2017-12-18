@@ -28,7 +28,7 @@ class Marker extends Model {
     /**
      * Returns list of references.
      */ 
-    public function refs($panel_id) {
+    public function refs($panel_id = null) {
 	if (!$this->aReferences) {
 	    $qGetRefs = PanelMarkerReference::where('marker_id', $this->id);
 	    if ($panel_id) {
