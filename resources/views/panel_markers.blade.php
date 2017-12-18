@@ -180,11 +180,24 @@
 			    {{$oMarker->name}}
 			</td>
 			@foreach($aSeries as $oSeries)
-			    <td>
-				@if (isset($aRes[$oSeries->id]['markers'][$oMarker->id]))
+			    @if (isset($aRes[$oSeries->id]['markers'][$oMarker->id]))
+			    <td
+					@php
+					    switch ($aRes[$oSeries->id]['markers'][$oMarker->id]->checkRef(1)) {
+						case 0:
+						    echo 'class="marker-success"';
+						    break;
+						case 1:
+						    echo 'class="marker-fail"';
+						    break;
+					    }
+					@endphp
+			    >
 				    {{$aRes[$oSeries->id]['markers'][$oMarker->id]->value}} <span title="{{$oMarker->units_full}}">{{$oMarker->units}}</span>
-				@endif
 			    </td>
+			    @else
+				<td></td>
+			    @endif
 			@endforeach
 		    </tr>
 		    @endforeach

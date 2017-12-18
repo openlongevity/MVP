@@ -33,6 +33,8 @@ class Marker extends Model {
 	    $qGetRefs = PanelMarkerReference::where('marker_id', $this->id);
 	    if ($panel_id) {
 		$qGetRefs = $qGetRefs->where('panel_id', $panel_id);
+	    } else {
+		$qGetRefs = $qGetRefs->whereNull('panel_id');
 	    }
 	    $this->aReferences = $qGetRefs->get();
 	}

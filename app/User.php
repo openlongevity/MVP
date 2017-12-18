@@ -81,16 +81,24 @@ class User extends Authenticatable
     }
     
     /**
-     * Returns amount of ages due to birthday.
+     * Returns amount of ages due to birthday and lable after it.
      */ 
     public function getAges() {
+	$age = $this->getIntAges();
+	return $age.' '.Helper::getPluralForm($age, ['год', 'года', 'лет']);
+    }
+    
+    /**
+     * Returns amount of ages due to birthday.
+     */ 
+    public function getIntAges() {
 	$birthDate = explode("-", $this->birthday);
 	//get age from date or birthdate
 	$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[1]))) > date("md")
 	    ? ((date("Y") - $birthDate[0]) - 1)
 	    : (date("Y") - $birthDate[0]));
 
-	return $age.' '.Helper::getPluralForm($age, ['год', 'года', 'лет']);
+	return $age;
     }
     
     /**

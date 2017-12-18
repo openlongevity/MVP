@@ -35,10 +35,8 @@ class UserMarkersController extends Controller
 		->where('deleted', 0)
 		->orderBy('date', 'desc')->get();
 	$aMarkers = Marker::get()->keyBy('id');
-	$aNewUserMarkers = array();
 	foreach($aUserMarkers as $oMarker) {
 	    $oMarker->name = $aMarkers[$oMarker->marker_id]->name;
-	    $aNewUserMarkers[] = $oMarker;
 	}
 
 	return view('user_markers', ['oUser' => $oUser, 
