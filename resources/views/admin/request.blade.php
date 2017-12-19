@@ -179,6 +179,11 @@
 			<td>
 			    {{$oMarker->name}}
 			</td>
+			<td>
+			    @foreach($oMarker->refs($oPanel->id) as $oRef)
+				{{$oRef->toString($oMarker->units)}} <br />
+			    @endforeach
+			</td>
 			    @if (isset($aUserMarkers[$oMarker->id]))
 			    <td 
 					@php

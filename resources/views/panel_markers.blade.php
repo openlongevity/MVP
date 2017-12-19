@@ -164,6 +164,9 @@
 			<th>
 			    Название
 			</th>
+			<th>
+			    Референс
+			</th>
 			@foreach($aSeries as $oSeries)
 			    <th>
 				@if ($aRes[$oSeries->id]['interpretation_file'])
@@ -179,6 +182,11 @@
 		    <tr>
 			<td>
 			    {{$oMarker->name}}
+			</td>
+			<td>
+			    @foreach($oMarker->refs($oPanel->id) as $oRef)
+				{{$oRef->toString($oMarker->units)}} <br />
+			    @endforeach
 			</td>
 			@foreach($aSeries as $oSeries)
 			    @if (isset($aRes[$oSeries->id]['markers'][$oMarker->id]))
