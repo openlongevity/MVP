@@ -41,7 +41,7 @@ class PanelController extends Controller
 	return view('panel', [
 		'oUser' => $oUser, 
 		'oPanel' => $oPanel, 
-		'active' => 'panel_ol11_link'
+		'active' => 'panel_link_'.$request->id
 	]);
     }
     
@@ -74,7 +74,8 @@ class PanelController extends Controller
 		'oUser' => $oUser, 
 		'oPanel' => $oPanel, 
 		'allMarkers' => $aMarkers,
-		'active' => 'panel_ol11_link']);
+		'active' => 'panel_link_'.$request->id
+	]);
     }
     
     /**
@@ -135,7 +136,7 @@ class PanelController extends Controller
 		'oPanel' => $oPanel, 
 		'aRes' => $aRes,
 		'aSeries' => $aSeries,
-		'active' => 'panel_ol11_link'
+		'active' => 'panel_link_'.$request->id
 	]);
     }
     
@@ -263,7 +264,9 @@ class PanelController extends Controller
      */
     public function addMarkerToPanel(Request $request)
     {
-	$oPanelMarker = PanelMarker::where('marker_id', $request->marker_id)->first();
+	$oPanelMarker = PanelMarker::where('marker_id', $request->marker_id)
+		->where('panel_id', $request->panel_id)
+		->first();
 	if ($oPanelMarker) {
 	    return response()->json(array('error' => 2));
 	}

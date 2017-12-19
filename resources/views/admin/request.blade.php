@@ -187,7 +187,7 @@
 			    @if (isset($aUserMarkers[$oMarker->id]))
 			    <td 
 					@php
-					    switch ($aUserMarkers[$oMarker->id]->checkRef(1)) {
+					    switch ($aUserMarkers[$oMarker->id]->checkRef($oPanel->id)) {
 						case 0:
 						    echo 'class="marker-success"';
 						    break;

@@ -60,8 +60,11 @@
 			    <li  id="my_markers_link">
 				<a href="/my_markers">Мои маркеры</a>
 			    </li>  
-			    <li id="panel_ol11_link">
+			    <li id="panel_link_1">
 				<a href="/panel/1">Панель OL 1.1</a>
+			    </li>
+			    <li id="panel_link_2">
+				<a href="/panel/2">Панель OL.Мини</a>
 			    </li>
 			    @if ($oUser && $oUser->admin == 1)
 				<li id="admin_panels_link">
@@ -105,7 +108,7 @@
 		$(document).on("click", "#my_markers_link", function(e) {
 		    location.href = '/my_markers';
 		});
-		$(document).on("click", "#panel_ol11_link", function(e) {
+		$(document).on("click", "#panel_link_1", function(e) {
 		    location.href = '/panel/1';
 		});
 

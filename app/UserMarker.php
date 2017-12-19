@@ -18,7 +18,7 @@ class UserMarker extends Model {
     /**
      * Returns list of references.
      */ 
-    public function refs($panel_id) {
+    public function refs($panel_id = null) {
 	if (!$this->aReferences) {
 	    $this->aReferences = Helper::getRefs($this->marker_id, $panel_id);
 	}

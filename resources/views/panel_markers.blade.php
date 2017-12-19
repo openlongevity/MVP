@@ -217,7 +217,6 @@
 	    Анализы по панели
 	</div>
 	<div class="col-md-8">
-	    @if (count($aSeries))
 	    <table class="table">
 		<thead>
 		    <tr class="table-header">
@@ -252,7 +251,7 @@
 			    @if (isset($aRes[$oSeries->id]['markers'][$oMarker->id]))
 			    <td
 					@php
-					    switch ($aRes[$oSeries->id]['markers'][$oMarker->id]->checkRef(1)) {
+					    switch ($aRes[$oSeries->id]['markers'][$oMarker->id]->checkRef($oPanel->id)) {
 						case 0:
 						    echo 'class="marker-success"';
 						    break;
@@ -281,7 +280,6 @@
 		    @endforeach
 		</tbody>
 	    </table>
-	    @endif
 	</div>
     </div>
 </div>
