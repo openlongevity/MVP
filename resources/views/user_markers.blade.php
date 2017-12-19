@@ -106,34 +106,34 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	    <h4 class="modal-title">Добавление маркеров</h4>
-	    Выберите необходимый вам анализ и заполните его значение
-        </div>
+	    <h4 class="modal-title">Добавление результатов исследований</h4>
+	    Выберите название исследования, укажите результат и лабораторные нормы, указанные в вашем бланке. В графе "дата" укажите дату сдачи анализа.
+	</div>
 	<div class="modal-body">
 	    <form id="add_markers_form">
 	    <table class="table" id="user_markers_table">
 		<thead>
 		    <tr>
 			<th>
-			    Название
+			    Исследование
 			</th>
 			<th>
-			    Значение
+			    Результат
 			</th>
 			<th>
 			    Ед. изм.
 			</th>
 			<th>
-			    Лаб. референс (мин)
+			    Норма лаборатории (min)
 			</th>
 			<th>
-			    Лаб. референс (макс)
+			    Норма лаборатории (max)
 			</th>
 			<th>
 			    Лаборатория
 			</th>
 			<th>
-			    Дата
+			    Дата сдачи анализа
 			</th>
 			<th>
 			</th>
@@ -143,7 +143,7 @@
 		    <tr>
 			<td>
 			    <select name="marker_id" class="marker_id js-example-basic-single markers_select" id="marker_chooser">
-				<option value="0">Выберите маркер</option>
+				<option value="0">Выберите исследование</option>
 				@foreach($allMarkers as $marker) 
 				    <option value="{{$marker->id}}">{{$marker->name}}</option>
 				@endforeach
@@ -154,7 +154,7 @@
 		</tbody>
 	    </table>
 	    <div>
-		<button class="btn btn-md btn-ol-login" value="Сохранить" id="save_markers_btn"  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Загрузка...">Загрузить данные</button>
+		<button class="btn btn-md btn-ol-login" value="Сохранить" id="save_markers_btn"  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Сохранение...">Сохранить</button>
                 <button type="button" class="btn btn-md btn-ol-cancel" data-dismiss="modal" aria-label="Close">Закрыть</button>
 		<input id="submit_handle" type="submit" style="display: none">
 		<input name="count_rows" type="hidden" id="count_rows"/>
@@ -171,7 +171,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	    <h4 class="modal-title">Редактирование маркера</h4>
+	    <h4 class="modal-title">Редактирование результата исследования</h4>
         </div>
 	<div class="modal-body">
 	    <form id="edit_marker_form">
@@ -179,25 +179,25 @@
 		<thead>
 		    <tr>
 			<th>
-			    Название
+			    Исследование
 			</th>
 			<th>
-			    Значение
+			    Результат
 			</th>
 			<th>
 			    Ед. изм.
 			</th>
 			<th>
-			    Лаб. референс (мин)
+			    Норма лаборатории (min)
 			</th>
 			<th>
-			    Лаб. референс (макс)
+			    Норма лаборатории (max)
 			</th>
 			<th>
 			    Лаборатория
 			</th>
 			<th>
-			    Дата
+			    Дата сдачи анализа
 			</th>
 		    </tr>
 		</thead>
@@ -205,7 +205,7 @@
 <tr id="marker_row">
     <td>
         <select name="marker_id" class="marker_id js-example-basic-single markers_select" id="marker_id">
-    	<option value="0">Выберите маркер</option>
+    	<option value="0">Выберите исследование</option>
         @foreach($allMarkers as $marker) 
 	   <option value="{{$marker->id}}">{{$marker->name}}</option>
         @endforeach
@@ -263,7 +263,7 @@
 
 <div class="profile-content">
 	<div class="my-markers-header">
-	    Мои маркеры
+	    Результаты моих исследований
 	</div>
 	@if (!count($markers))
 	    Вы пока не добавили ни одного анализа
