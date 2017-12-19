@@ -52,6 +52,7 @@ Route::get('/panel/{id}', 'PanelController@panel');
 Route::get('/panel/markers/{id}', 'PanelController@panelMarkers');
 Route::post('/panel/markers/save', 'PanelController@saveUserPanelMarkers');
 Route::post('/panel/markers/add/file', 'PanelController@addDataFile');
+Route::post('/panel/marker/add/file', 'PanelController@addMarkerDataFile');
 
 // Admin
 Route::group([
@@ -126,3 +127,4 @@ Route::get('/notaccess', 'ErrorController@notaccess');
 // Access to files.
 Route::get('/files/data/{series_id}', 'FilesController@getDataFile');
 Route::get('/files/interpretation/{series_id}', 'FilesController@getInterpretationFile');
+Route::get('/files/marker/{user_marker_id}', 'FilesController@getMarkerFile');

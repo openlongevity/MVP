@@ -421,5 +421,47 @@ class PanelController extends Controller
 	]);
     }
     
+    /**
+     * Adds file for marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addMarkerDataFile(Request $request)
+    {
+	$oUser = Auth::user();
+	
+	// Create user marker.
+	if ($request->user_marker_id) {
+	    $oUserMarker = UserMarker::where('id', $request->user_marker_id)->first();
+	} else {
+	    $oUserMarker = new UserMarker();
+	    $oUserMarker->user_id = $oUser->id;
+	    $oUserMarker->marker_id = $request->marker_id;
+	    $oUserMarker->Save();
+	}
+	
+	$file = $request->{"input-data-marker-file"};
+	$mime = $file->getMimeType();
+	// Save file.  
+        $destinationPath = "marker_files/";
+	$filename = $oUserMarker->id."_".$file->getClientOriginalName();
+	$file->move($destinationPath, $filename);
+
+	$oUserMarker->data_file = $filename;
+	$oUserMarker->data_file_mime = $mime;
+	$oUserMarker->Save();
+
+
+	// Create panel user marker
+	if (!$request->user_marker_id) {
+	    $oPanelUserSeriesMarker = new PanelUserSeriesMarker();
+	    $oPanelUserSeriesMarker->series_id = $request->series_id;
+	    $oPanelUserSeriesMarker->user_marker_id = $oUserMarker->id;
+	    $oPanelUserSeriesMarker->Save();
+	}
+
+	return response()->json(array('result' => 'ok'));
+    }
+    
 }
 

@@ -66,6 +66,33 @@ class FilesController extends Controller
 
 	return view('errors/notaccess', ['oUser' => $oUser, 'active' => 'profile_link']);
     }
+    
+    /**
+     * Get marker file file for series.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getMarkerFile(Request $request)
+    {
+	$fType = 'marker_file';
+	$oUser = Auth::user();
+	$oUserMarker = UserMarker::where('id', $request->user_marker_id)
+		->first();
+	if ($oUserMarker->user_id == $oUser->id || $oUser->admin == 1) {
+	    if ($oUserMarker->data_file) {
+		$file = File::get($fType.'s/'.$oUserMarker->data_file);
+		$response = Response::make($file, 200);
+		if ($oUserMarker->data_file_mime) {
+		    $response->header('Content-Type', $oUserMarker->data_file_mime);
+		}
+		return $response;
+	    }
+	}
+
+	return view('errors/notaccess', ['oUser' => $oUser, 'active' => 'profile_link']);
+    }
+
+
 }    
 
 

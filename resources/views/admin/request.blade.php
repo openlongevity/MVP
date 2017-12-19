@@ -197,7 +197,11 @@
 					    }
 					@endphp
 			    >
+				@if ($aUserMarkers[$oMarker->id]->data_file)
+				    <a href="/files/marker/{{$aUserMarkers[$oMarker->id]->id}}">Файл</a>
+				@else
 				    {{$aUserMarkers[$oMarker->id]->value}} <span title="{{$oMarker->units_full}}">{{$oMarker->units}}</span>
+				@endif
 			    </td>
 			    @else
 				<td></td>

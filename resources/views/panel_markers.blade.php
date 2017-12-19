@@ -62,6 +62,49 @@
 		});
 		
                     
+		$(document).on("click", ".add_marker_file", function(e) {
+			var marker_id = $(this).attr('data-marker-id');
+			var series_id = $(this).attr('data-series-id');
+			var marker_name = $(this).attr('data-marker-name');
+			var user_marker_id = $(this).attr('data-user-marker-id');
+			$("#marker_name").html(marker_name);
+			$("#add-marker-file-modal").modal();
+                        $("#input-data-marker-file").fileinput({
+                            overwriteInitial: false,
+                            initialCaption: "Файл для маркера " + marker_name,
+			    allowedFileExtensions: ['pdf', 'png', 'jpg'],
+			    language: 'ru',
+                            uploadUrl: '/panel/marker/add/file',
+			    ajaxSettings: { headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }},
+			    uploadExtraData: function () {
+				    return  {panel_id: {{$oPanel->id}}, 
+					     marker_id: marker_id,
+					     user_marker_id: user_marker_id,
+					     series_id: series_id,
+					    }
+			    },
+																      
+
+                        });
+			$('#input-data-marker-file').on('fileuploaded', function(event, data, previewId, index) {
+			    $("#add-marker-file-modal").modal('toggle');
+			    $.notify("Данные отправлены успешно!", "success");
+			    setTimeout(function() {
+				location.reload();
+			    }, 500);
+			});
+
+		    e.preventDefault();
+		    return false;
+		});
+
+
+		$('#add-file-modal').on('hidden.bs.modal', function (e) {
+		    $('#input-interpretation-file').fileinput('clear');
+		    $("#input-interpretation-file").fileinput('refresh');
+		    $('#input-interpretation-file').fileinput('clearStack');
+		    $('#input-interpretation-file').fileinput('destroy');
+		});
 
 	    });
 	});
@@ -124,6 +167,23 @@
 	<div class="modal-body">
 	    <form id="add_file_form">
 		<input id="input-data-file" name="input-data-file" type="file" class="file-loading" data-preview-file-type="pdf">
+	    </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal for add file for marker. -->
+<div id="add-marker-file-modal" class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <h4 class="modal-title">Добавление файла для качественного маркера <span id="marker_name"></span></h4>
+	</div>
+	<div class="modal-body">
+	    <form>
+		<input id="input-data-marker-file" name="input-data-marker-file" type="file" class="file-loading">
 	    </form>
         </div>
     </div>
@@ -202,8 +262,17 @@
 					    }
 					@endphp
 			    >
+				@if ($aRes[$oSeries->id]['markers'][$oMarker->id]->data_file)
+				    <a href="/files/marker/{{$aRes[$oSeries->id]['markers'][$oMarker->id]->id}}">Файл</a>
+				    (<a href="#" class="add_marker_file" data-series-id="{{$oSeries->id}}" data-marker-id="{{$oMarker->id}}" data-marker-name="{{$oMarker->name}}" data-user-marker-id="{{$aRes[$oSeries->id]['markers'][$oMarker->id]->id}}">заменить</a>)
+				@else
 				    {{$aRes[$oSeries->id]['markers'][$oMarker->id]->value}} <span title="{{$oMarker->units_full}}">{{$oMarker->units}}</span>
+				@endif
 			    </td>
+			    @elseif ($oMarker->is_quality == 1)
+				<td>
+				    <a href="#" class="add_marker_file" data-series-id="{{$oSeries->id}}" data-marker-id="{{$oMarker->id}}" data-marker-name="{{$oMarker->name}}">Добавить файл</a>
+				</td>
 			    @else
 				<td></td>
 			    @endif
