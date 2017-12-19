@@ -20,8 +20,7 @@
 	    <hr />
             <div class="row">
                 <div class="col-xs-6 label-ss">
-		    Вы можете использовать <br />
-		    аккаунт своей соцсети: 
+		    Используя: 
 		</div>
                 <div class="col-xs-6">
                     <a class="btn btn-sm btn-ol-ss m-r-5" href="{{ url('/login/facebook') }}"><i class="fa fa-facebook color-white"></i></a>
@@ -30,7 +29,7 @@
 		</div>
             </div>
 	    <hr />
-            <p class="m-b-20 label-email">Или войти с помощью E-mail:</p>
+            <p class="m-b-20 label-email">Или с помощью E-mail:</p>
             <form name="form" novalidate  method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
                 <div class="row">
