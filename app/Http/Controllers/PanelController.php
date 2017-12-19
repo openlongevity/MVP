@@ -150,11 +150,15 @@ class PanelController extends Controller
 	$oUser = Auth::user();
 	
 	// Create panel user seris.
-	$oSeries = new PanelUserSeries();
-	$oseries->panel_id = $request->id;
-	$oseries->user_id = $oUser->id;
-	$oseries->date = date('y-m-d');
-	$oseries->save();
+	if ($request->series_id) {
+	    $oSeries = PanelUserSeries::where('id', $request->series_id)->first();
+	} else {
+	    $oSeries = new PanelUserSeries();
+	    $oSeries->panel_id = $request->id;
+	    $oSeries->user_id = $request->user_id;
+	    $oSeries->date = date('y-m-d');
+	    $oSeries->save();
+	}
 
 
 	$oPanel = Panel::where('id', $request->id)->first();
@@ -165,7 +169,7 @@ class PanelController extends Controller
 		&& !empty($request->{"marker_".$oPanelMarker->marker_id})) {
 		// Create user marker;
 		$oMarker = new UserMarker();
-		$oMarker->user_id = $oUser->id;
+		$oMarker->user_id = $request->user_id;
 		$oMarker->marker_id = $oPanelMarker->marker_id;
 		$oMarker->value = $request->{"marker_".$oPanelMarker->marker_id};
 		$oMarker->fail = 0;

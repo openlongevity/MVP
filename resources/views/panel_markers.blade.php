@@ -106,6 +106,7 @@
                 <button type="button" class="btn btn-md btn-ol-cancel" data-dismiss="modal" aria-label="Close">Закрыть</button>
 	    </div>
 	    <input type="hidden" value="{{$oPanel->id}}" name="id" />
+	    <input type="hidden" value="{{$oUser->id}}" name="user_id" />
 	    </form>
         </div>
     </div>

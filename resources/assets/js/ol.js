@@ -181,7 +181,8 @@ ol.manager = function () {
 		},	
 		success: function(result) {
 		    $("#save_panel_markers_btn").button('reset');
-		    location.href = '/panel/markers/' + panel_id; 
+		    // location.href = '/panel/markers/' + panel_id; 
+		    location.reload(); 
 		},
 	    });
             return false;
