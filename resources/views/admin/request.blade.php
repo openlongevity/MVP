@@ -213,9 +213,6 @@
 		</div>
 	    </div>
 	    <div class="">&nbsp;</div>
-	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Дополнительные файлы</div>
-	    <div class="">&nbsp;</div>
 	    <div class="my-header-2">Файл трактовки</div>
 	    <div>
 		@if ($oSeries->interpretation_file)
