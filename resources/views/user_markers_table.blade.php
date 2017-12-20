@@ -13,7 +13,7 @@
     <tbody>
 	@foreach($markers as $marker)
 	<tr>
-	    <td>{{$marker->name}}</td>
+	    <td><a href="/markers/marker/{{$marker->id}}">{{$marker->name}}</a></td>
 	    <td>{{$marker->value}} {{$marker->lab_units}}</td>
 	    <td class="@if ($marker->fail) marker-fail @else marker-success @endif">{{$marker->ref_lab_value_min}} - {{$marker->ref_lab_value_max}} {{$marker->lab_units}}</td>
 	    <td

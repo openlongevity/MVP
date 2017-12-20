@@ -138,4 +138,19 @@ class UserMarkersController extends Controller
 	}
 	return response()->json(array('result' => 'ok'));
     }
+    
+    
+    /**
+     * Show page with marker.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getMarker(Request $request)
+    {
+	$oMarker = Marker::where('id', $request->id)->first();
+	$oUser = Auth::user();
+	return view('marker', ['oMarker' => $oMarker,
+		'oUser'	=> $oUser,
+		'active' => 'my_markers_link']);
+    }
 }

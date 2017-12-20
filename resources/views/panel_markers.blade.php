@@ -240,7 +240,7 @@
 		    @foreach($oPanel->getMarkers() as $oMarker)
 		    <tr>
 			<td>
-			    {{$oMarker->name}}
+			    <a href="/markers/marker/{{$oMarker->id}}">{{$oMarker->name}}</a>
 			</td>
 			<td>
 			    @foreach($oMarker->refs($oPanel->id) as $oRef)
