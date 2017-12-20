@@ -7,6 +7,8 @@
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+    <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css' />
+    <script type='text/javascript' src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
 
     <script type="text/javascript">
 	var olManager = new ol.manager();
@@ -28,6 +30,23 @@
 
 	jQuery(function($) {
 	    $(document).ready( function () {
+		$('#user_markers_table_main').DataTable({
+                    "iDisplayLength": 20,
+		    "language": {
+                                "lengthMenu": "Отображать _MENU_ записей на странице",
+                                "zeroRecords": "Ничего не найдено",
+                                "info": "_PAGE_ страница из _PAGES_",
+                                "infoEmpty": "Нет записей",
+                                "infoFiltered": "(всего _MAX_)",
+                                "paginate": {
+                                    "first": "Первый",
+                                    "next": "След.",
+                                    "previous": "Пред."
+                                },
+                                "search": "Поиск:",
+		    }
+                 });
+ 
 		$(document).on("click", "#btn-add-markers", function(e) {
 		    $("#user_markers_table tbody").find("tr:not(:last)").remove();
 		    $('#add-markers-modal').modal();

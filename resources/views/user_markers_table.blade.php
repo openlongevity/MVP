@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" id="user_markers_table_main">
     <thead>
 	<tr class="table-header">
 	    <th>Название</th>
