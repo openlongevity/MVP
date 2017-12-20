@@ -29,55 +29,58 @@
     <div class="mymarkers-row">
 	<div class="my-markers-header">
 	    Маркер {{$oMarker->name}}
+	    @if (isset($oUser) && $oUser->admin == 1)
+		<a class="btn btn-xs btn-ol-edit" href="/admin/marker/edit/{{$oMarker->id}}">Редактировать</a>
+	    @endif
 	</div>
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Название</div>
+	    <div><h3>Название</h3></div>
 	    <div>
 		{{$oMarker->name}}
 	    </div>
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Синонимы (на русском)</div>
+	    <div class="my-header-2"><h3>Синонимы (на русском)</h3></div>
 	    <div>
 		{{$oMarker->names}}
 	    </div>
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Синонимы (на английском)</div>
+	    <div class="my-header-2"><h3>Синонимы (на английском)</h3></div>
 	    <div>
 		{{$oMarker->names_en}}
 	    </div>
 	    
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Краткое описание</div>
+	    <div class="my-header-2"><h3>Краткое описание</h3></div>
 	    <div>
 		{{$oMarker->desc_short}}
 	    </div>
 	    
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Описание</div>
+	    <div class="my-header-2"><h3>Описание</h3></div>
 	    <div>
 		{{$oMarker->desc}}
 	    </div>
 
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Единицы измерения</div>
+	    <div class="my-header-2"><h3>Единицы измерения</h3></div>
 	    <div>
 		{{$oMarker->units}} ({{$oMarker->units_full}})
 	    </div>
 
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Метод</div>
+	    <div class="my-header-2"><h3>Метод</h3></div>
 	    <div>
 		{{$oMarker->method}}
 	    </div>
 
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Биоматериал</div>
+	    <div class="my-header-2"><h3>Биоматериал</h3></div>
 	    <div>
 		{{$oMarker->biomaterial}}
 	    </div>
 
 	    <div class="">&nbsp;</div>
-	    <div class="my-header-2">Подготовка</div>
+	    <div class="my-header-2"><h3>Подготовка</h3></div>
 	    <div>
 		{{$oMarker->preparing}}
 	    </div>
